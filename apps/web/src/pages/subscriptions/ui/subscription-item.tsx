@@ -1,5 +1,5 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { Calendar, DotsThree } from "@phosphor-icons/react";
+import { CalendarIcon, DotsThreeIcon } from "@phosphor-icons/react";
 
 import { DeleteSubscriptionMenuItem } from "@/features/delete-subscription/ui/delete-subscription-menu-item";
 import { ManageSubscriptionStatusMenuItems } from "@/features/manage-subscription-status/ui/manage-subscription-status-menu-items";
@@ -44,7 +44,7 @@ export function SubscriptionItem({ subscription }: SubscriptionItemProps) {
     <div className="flex items-center justify-between rounded-md border p-4">
       <div className="flex items-center gap-4">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-          <Calendar className="h-5 w-5 text-primary" />
+          <CalendarIcon className="h-5 w-5 text-primary" />
         </div>
         <div>
           <div className="flex items-center gap-2">
@@ -67,7 +67,7 @@ export function SubscriptionItem({ subscription }: SubscriptionItemProps) {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button aria-label="Subscription options" size="icon" variant="ghost">
-            <DotsThree weight="bold" aria-hidden />
+            <DotsThreeIcon weight="bold" aria-hidden />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

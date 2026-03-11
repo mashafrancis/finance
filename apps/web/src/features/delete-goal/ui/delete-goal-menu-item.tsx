@@ -1,4 +1,4 @@
-import { Trash } from "@phosphor-icons/react";
+import { TrashIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { useDeleteGoal } from "@/entities/goal/api/use-delete-goal";
 import type { GoalId } from "@/entities/goal/types/goal-id";
@@ -28,7 +28,7 @@ export function DeleteGoalMenuItem({ goalId }: DeleteGoalMenuItemProps) {
       className="text-destructive focus:text-destructive"
       onClick={handleDelete}
     >
-      <Trash weight="bold" className="mr-2" />
+      <TrashIcon weight="bold" className="mr-2" />
       Delete
     </DropdownMenuItem>
   );

@@ -1,6 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { Schema } from "effect";
-import { Plus } from "@phosphor-icons/react";
+import { PlusIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -62,7 +62,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
       <DialogTrigger asChild>
         {children || (
           <Button>
-            <Plus className="mr-2" data-icon="inline-start" />
+            <PlusIcon className="mr-2" data-icon="inline-start" />
             Create Goal
           </Button>
         )}

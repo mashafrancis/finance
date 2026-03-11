@@ -2,10 +2,10 @@ import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Doc } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
 import {
-  Archive,
-  ArrowCounterClockwise,
-  CreditCard,
-  DotsThree,
+  ArchiveIcon,
+  ArrowCounterClockwiseIcon,
+  CreditCardIcon,
+  DotsThreeIcon,
 } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
@@ -37,7 +37,7 @@ export function AccountCard({ account, isArchived = false }: AccountCardProps) {
   const unarchiveAccount = useMutation(api.accounts.unarchive);
 
   const TypeIcon =
-    ACCOUNT_TYPES.find((t) => t.value === account.type)?.icon || CreditCard;
+    ACCOUNT_TYPES.find((t) => t.value === account.type)?.icon || CreditCardIcon;
 
   const handleArchive = async () => {
     try {
@@ -74,18 +74,18 @@ export function AccountCard({ account, isArchived = false }: AccountCardProps) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button aria-label="Account options" size="icon" variant="ghost">
-              <DotsThree weight="bold" aria-hidden />
+              <DotsThreeIcon weight="bold" aria-hidden />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {isArchived ? (
               <DropdownMenuItem onClick={handleUnarchive}>
-                <ArrowCounterClockwise weight="bold" className="mr-2" />
+                <ArrowCounterClockwiseIcon weight="bold" className="mr-2" />
                 Restore
               </DropdownMenuItem>
             ) : (
               <DropdownMenuItem onClick={handleArchive}>
-                <Archive weight="bold" className="mr-2" />
+                <ArchiveIcon weight="bold" className="mr-2" />
                 Archive
               </DropdownMenuItem>
             )}

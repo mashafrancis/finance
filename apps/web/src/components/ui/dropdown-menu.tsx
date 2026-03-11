@@ -4,7 +4,7 @@ import * as React from "react"
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 
 import { cn } from "@/lib/utils"
-import { CaretRight, Check } from "@phosphor-icons/react"
+import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react"
 
 function DropdownMenu({ ...props }: MenuPrimitive.Root.Props) {
   return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />
@@ -136,7 +136,7 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <CaretRight className="ml-auto" weight="bold" />
+      <CaretRightIcon className="ml-auto" weight="bold" />
     </MenuPrimitive.SubmenuTrigger>
   )
 }
@@ -187,7 +187,7 @@ function DropdownMenuCheckboxItem({
         data-slot="dropdown-menu-checkbox-item-indicator"
       >
         <MenuPrimitive.CheckboxItemIndicator>
-          <Check weight="bold" />
+          <CheckIcon weight="bold" />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
       {children}
@@ -227,7 +227,7 @@ function DropdownMenuRadioItem({
         data-slot="dropdown-menu-radio-item-indicator"
       >
         <MenuPrimitive.RadioItemIndicator>
-          <Check weight="bold" />
+          <CheckIcon weight="bold" />
         </MenuPrimitive.RadioItemIndicator>
       </span>
       {children}

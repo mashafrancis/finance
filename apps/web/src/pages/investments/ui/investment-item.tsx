@@ -1,5 +1,9 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { CaretDown, CaretUp, DotsThree } from "@phosphor-icons/react";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  DotsThreeIcon,
+} from "@phosphor-icons/react";
 
 import { DeleteInvestmentMenuItem } from "@/features/delete-investment/ui/delete-investment-menu-item";
 import { formatCurrency } from "@/shared/lib/format/currency";
@@ -36,9 +40,9 @@ export function InvestmentItem({ investment }: InvestmentItemProps) {
           }`}
         >
           {isPositive ? (
-            <CaretUp className="h-5 w-5 text-chart-2" weight="bold" />
+            <CaretUpIcon className="h-5 w-5 text-chart-2" weight="bold" />
           ) : (
-            <CaretDown className="h-5 w-5 text-destructive" weight="bold" />
+            <CaretDownIcon className="h-5 w-5 text-destructive" weight="bold" />
           )}
         </div>
         <div>
@@ -71,7 +75,7 @@ export function InvestmentItem({ investment }: InvestmentItemProps) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button aria-label="Investment options" size="icon" variant="ghost">
-              <DotsThree weight="bold" aria-hidden />
+              <DotsThreeIcon weight="bold" aria-hidden />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

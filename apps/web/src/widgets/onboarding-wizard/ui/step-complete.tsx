@@ -1,4 +1,4 @@
-import { CheckCircle } from "@phosphor-icons/react";
+import { CheckCircleIcon } from "@phosphor-icons/react";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
 import { useCategoriesList } from "@/entities/category/api/use-categories-list";
@@ -25,7 +25,7 @@ export default function StepComplete({
   return (
     <div className="flex flex-col items-center justify-center gap-6 py-8 text-center">
       <div className="flex h-20 w-20 items-center justify-center rounded-full bg-chart-2/10">
-        <CheckCircle className="h-10 w-10 text-chart-2" weight="fill" />
+        <CheckCircleIcon className="h-10 w-10 text-chart-2" weight="fill" />
       </div>
 
       <div className="flex flex-col gap-2">

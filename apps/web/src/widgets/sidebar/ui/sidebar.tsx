@@ -1,16 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { Authenticated } from "convex/react";
 import {
-  CreditCard,
-  ChartLineUp,
-  SignOut,
-  List,
-  Receipt,
-  Gear,
-  Target,
-  TrendUp,
-  Wallet,
-  X,
+  CreditCardIcon,
+  ChartLineUpIcon,
+  SignOutIcon,
+  ListIcon,
+  ReceiptIcon,
+  GearIcon,
+  TargetIcon,
+  TrendUpIcon,
+  WalletIcon,
+  XIcon,
 } from "@phosphor-icons/react";
 import { useState } from "react";
 
@@ -30,16 +30,16 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 const navLinks = [
-  { to: "/dashboard", label: "Dashboard", icon: ChartLineUp },
-  { to: "/transactions", label: "Transactions", icon: Receipt },
-  { to: "/accounts", label: "Accounts", icon: CreditCard },
-  { to: "/subscriptions", label: "Subscriptions", icon: CreditCard },
-  { to: "/investments", label: "Investments", icon: TrendUp },
-  { to: "/goals", label: "Goals", icon: Target },
+  { to: "/dashboard", label: "Dashboard", icon: ChartLineUpIcon },
+  { to: "/transactions", label: "Transactions", icon: ReceiptIcon },
+  { to: "/accounts", label: "Accounts", icon: CreditCardIcon },
+  { to: "/subscriptions", label: "Subscriptions", icon: CreditCardIcon },
+  { to: "/investments", label: "Investments", icon: TrendUpIcon },
+  { to: "/goals", label: "Goals", icon: TargetIcon },
 ] as const;
 
 const bottomLinks = [
-  { to: "/settings", label: "Settings", icon: Gear },
+  { to: "/settings", label: "Settings", icon: GearIcon },
 ] as const;
 
 export function Sidebar() {
@@ -56,10 +56,10 @@ export function Sidebar() {
           size="icon"
           variant="ghost"
         >
-          <List weight="bold" aria-hidden />
+          <ListIcon weight="bold" aria-hidden />
         </Button>
         <Link className="flex items-center gap-2 font-semibold" to="/">
-          <Wallet className="h-6 w-6 text-primary" />
+          <WalletIcon className="h-6 w-6 text-primary" />
           <span className="text-lg">Plutus</span>
         </Link>
       </div>
@@ -89,13 +89,13 @@ export function Sidebar() {
             size="icon"
             variant="ghost"
           >
-            <X weight="bold" aria-hidden />
+            <XIcon weight="bold" aria-hidden />
           </Button>
         </div>
 
         {/* Logo */}
         <div className="flex h-14 items-center gap-2 px-4">
-          <Wallet className="h-6 w-6 text-primary" />
+          <WalletIcon className="h-6 w-6 text-primary" />
           <span className="font-bold text-lg">Plutus</span>
         </div>
 
@@ -198,7 +198,7 @@ function SidebarUser() {
               }}
               variant="destructive"
             >
-              <SignOut weight="bold" className="mr-2" />
+              <SignOutIcon weight="bold" className="mr-2" />
               Sign Out
             </DropdownMenuItem>
           </DropdownMenuGroup>

@@ -1,4 +1,4 @@
-import { Bell } from "@phosphor-icons/react";
+import { BellIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { useUpdateSettings } from "@/entities/user-settings/api/use-update-settings";
@@ -64,7 +64,7 @@ export function NotificationsForm() {
     <Card>
       <CardHeader>
         <div className="flex items-center gap-2">
-          <Bell className="h-5 w-5" />
+          <BellIcon className="h-5 w-5" />
           <CardTitle>Notifications</CardTitle>
         </div>
         <CardDescription>Manage how you receive notifications</CardDescription>

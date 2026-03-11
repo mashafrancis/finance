@@ -1,4 +1,4 @@
-import { Trash } from "@phosphor-icons/react";
+import { TrashIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { useDeleteAccount } from "@/entities/account/api/use-delete-account";
 import type { AccountId } from "@/entities/account/types/account-id";
@@ -30,7 +30,7 @@ export function DeleteAccountMenuItem({
       className="text-destructive focus:text-destructive"
       onClick={handleDelete}
     >
-      <Trash weight="bold" className="mr-2" />
+      <TrashIcon weight="bold" className="mr-2" />
       Delete
     </DropdownMenuItem>
   );

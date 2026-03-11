@@ -3,14 +3,14 @@ import type { Doc } from "@tanstack-effect-convex/backend/convex/_generated/data
 import { useMutation } from "convex/react";
 import type { Icon } from "@phosphor-icons/react";
 import {
-  Info,
-  Bell,
-  Check,
-  CheckCircle,
-  ArrowsClockwise,
-  Target,
-  Trash,
-  Wallet,
+  InfoIcon,
+  BellIcon,
+  CheckIcon,
+  CheckCircleIcon,
+  ArrowsClockwiseIcon,
+  TargetIcon,
+  TrashIcon,
+  WalletIcon,
 } from "@phosphor-icons/react";
 
 import { useNotificationsList } from "@/entities/notification/api/use-notifications-list";
@@ -25,13 +25,13 @@ type NotificationType = Doc<"notifications">["type"];
 function getNotificationIcon(type: NotificationType): Icon {
   switch (type) {
     case "subscription_renewal":
-      return ArrowsClockwise;
+      return ArrowsClockwiseIcon;
     case "goal_reached":
-      return Target;
+      return TargetIcon;
     case "budget_exceeded":
-      return Wallet;
+      return WalletIcon;
     default:
-      return Info;
+      return InfoIcon;
   }
 }
 
@@ -66,7 +66,7 @@ export function NotificationPopover() {
           size="icon"
           variant="outline"
         >
-          <Bell aria-hidden weight="bold" data-icon="inline-start" />
+          <BellIcon aria-hidden weight="bold" data-icon="inline-start" />
           {hasUnread && (
             <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary font-medium text-[10px] text-primary-foreground">
               {unreadCount && unreadCount > 9 ? "9+" : unreadCount}
@@ -85,7 +85,7 @@ export function NotificationPopover() {
               size="sm"
               variant="ghost"
             >
-              <CheckCircle data-icon="inline-start" weight="fill" />
+              <CheckCircleIcon data-icon="inline-start" weight="fill" />
               Mark all read
             </Button>
           )}
@@ -103,7 +103,7 @@ export function NotificationPopover() {
             if (notifications.length === 0) {
               return (
                 <div className="flex h-[100px] flex-col items-center justify-center gap-2 text-muted-foreground text-sm">
-                  <Bell className="h-8 w-8 opacity-40" />
+                  <BellIcon className="h-8 w-8 opacity-40" />
                   No notifications
                 </div>
               );
@@ -146,7 +146,7 @@ export function NotificationPopover() {
                             size="icon-sm"
                             variant="ghost"
                           >
-                            <Check weight="bold" aria-hidden />
+                            <CheckIcon weight="bold" aria-hidden />
                           </Button>
                         )}
                         <Button
@@ -158,7 +158,7 @@ export function NotificationPopover() {
                           size="icon-sm"
                           variant="ghost"
                         >
-                          <Trash weight="bold" aria-hidden />
+                          <TrashIcon weight="bold" aria-hidden />
                         </Button>
                       </div>
                     </div>

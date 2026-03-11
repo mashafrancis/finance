@@ -1,4 +1,4 @@
-import { Gear as Settings } from "@phosphor-icons/react";
+import { GearIcon as SettingsIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { useUpdateSettings } from "@/entities/user-settings/api/use-update-settings";
@@ -58,7 +58,7 @@ export function DashboardForm() {
     <Card>
       <CardHeader>
         <div className="flex items-center gap-2">
-          <Settings className="h-5 w-5" />
+          <SettingsIcon className="h-5 w-5" />
           <CardTitle>Dashboard</CardTitle>
         </div>
         <CardDescription>Customize your dashboard experience</CardDescription>

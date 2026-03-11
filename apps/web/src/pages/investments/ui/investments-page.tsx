@@ -1,4 +1,9 @@
-import { CaretDown, CaretUp, Plus, TrendUp } from "@phosphor-icons/react";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  PlusIcon,
+  TrendUpIcon,
+} from "@phosphor-icons/react";
 
 import { useInvestmentsPortfolio } from "@/entities/investment/api/use-investments-portfolio";
 import { useUserSettings } from "@/entities/user-settings/api/use-user-settings";
@@ -99,7 +104,7 @@ export function InvestmentsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="font-medium text-sm">Total Value</CardTitle>
-            <TrendUp className="h-4 w-4 text-muted-foreground" weight="bold" />
+            <TrendUpIcon className="h-4 w-4 text-muted-foreground" weight="bold" />
           </CardHeader>
           <CardContent>
             <div className="font-bold text-2xl">
@@ -118,9 +123,9 @@ export function InvestmentsPage() {
               Total Gain/Loss
             </CardTitle>
             {isPositive ? (
-              <CaretUp className="h-4 w-4 text-chart-2" />
+              <CaretUpIcon className="h-4 w-4 text-chart-2" />
             ) : (
-              <CaretDown className="h-4 w-4 text-destructive" />
+              <CaretDownIcon className="h-4 w-4 text-destructive" />
             )}
           </CardHeader>
           <CardContent>
@@ -167,11 +172,11 @@ export function InvestmentsPage() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-12">
-              <TrendUp className="h-12 w-12 text-muted-foreground" weight="bold" />
+              <TrendUpIcon className="h-12 w-12 text-muted-foreground" weight="bold" />
               <p className="mt-4 text-muted-foreground">No investments yet</p>
               <CreateInvestmentDialog>
                 <Button className="mt-4" variant="outline">
-                  <Plus className="mr-2" data-icon="inline-start" />
+                  <PlusIcon className="mr-2" data-icon="inline-start" />
                   Add your first investment
                 </Button>
               </CreateInvestmentDialog>

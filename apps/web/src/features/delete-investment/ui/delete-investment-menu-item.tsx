@@ -1,4 +1,4 @@
-import { Trash } from "@phosphor-icons/react";
+import { TrashIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { useDeleteInvestment } from "@/entities/investment/api/use-delete-investment";
 import type { InvestmentId } from "@/entities/investment/types/investment-id";
@@ -30,7 +30,7 @@ export function DeleteInvestmentMenuItem({
       className="text-destructive focus:text-destructive"
       onClick={handleDelete}
     >
-      <Trash weight="bold" className="mr-2" />
+      <TrashIcon weight="bold" className="mr-2" />
       Delete
     </DropdownMenuItem>
   );

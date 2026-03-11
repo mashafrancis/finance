@@ -1,12 +1,12 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import { useMutation } from "convex/react";
 import {
-  ArrowDownRight,
-  ArrowUpRight,
-  CreditCard,
-  CurrencyDollar,
-  TrendUp,
-  Wallet,
+  ArrowDownRightIcon,
+  ArrowUpRightIcon,
+  CreditCardIcon,
+  CurrencyDollarIcon,
+  TrendUpIcon,
+  WalletIcon,
 } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
@@ -150,7 +150,7 @@ export function DashboardPage() {
               <CardTitle className="font-medium text-sm">
                 Total Balance
               </CardTitle>
-              <Wallet className="h-4 w-4 text-muted-foreground" />
+              <WalletIcon className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="font-bold text-2xl">
@@ -165,7 +165,7 @@ export function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="font-medium text-sm">Income</CardTitle>
-              <ArrowUpRight className="h-4 w-4 text-chart-2" />
+              <ArrowUpRightIcon className="h-4 w-4 text-chart-2" />
             </CardHeader>
             <CardContent>
               <div className="font-bold text-2xl text-chart-2">
@@ -178,7 +178,7 @@ export function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="font-medium text-sm">Expenses</CardTitle>
-              <ArrowDownRight className="h-4 w-4 text-destructive" />
+              <ArrowDownRightIcon className="h-4 w-4 text-destructive" />
             </CardHeader>
             <CardContent>
               <div className="font-bold text-2xl text-destructive">
@@ -191,7 +191,7 @@ export function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="font-medium text-sm">Net Change</CardTitle>
-              <TrendUp className="h-4 w-4 text-muted-foreground" weight="bold" />
+              <TrendUpIcon className="h-4 w-4 text-muted-foreground" weight="bold" />
             </CardHeader>
             <CardContent>
               <div
@@ -353,7 +353,7 @@ export function DashboardPage() {
                   {summary.accountBalances.map((account) => (
                     <div className="flex items-center gap-4" key={account.id}>
                       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
-                        <CreditCard className="h-4 w-4 text-primary" />
+                        <CreditCardIcon className="h-4 w-4 text-primary" />
                       </div>
                       <div className="flex-1">
                         <p className="font-medium text-sm">{account.name}</p>
@@ -387,7 +387,7 @@ export function DashboardPage() {
                   {summary.upcomingSubscriptions.map((sub) => (
                     <div className="flex items-center gap-4" key={sub._id}>
                       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
-                        <CurrencyDollar className="h-4 w-4 text-primary" weight="bold" />
+                        <CurrencyDollarIcon className="h-4 w-4 text-primary" weight="bold" />
                       </div>
                       <div className="flex-1">
                         <p className="font-medium text-sm">{sub.name}</p>

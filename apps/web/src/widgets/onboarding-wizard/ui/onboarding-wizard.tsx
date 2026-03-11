@@ -1,7 +1,7 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import { useMutation } from "convex/react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Check } from "@phosphor-icons/react";
+import { CheckIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -135,7 +135,7 @@ export function OnboardingWizard({
                     type="button"
                   >
                     {index < currentStep ? (
-                      <Check className="h-5 w-5" aria-hidden />
+                      <CheckIcon className="h-5 w-5" aria-hidden />
                     ) : (
                       <span className="font-semibold text-sm">{index + 1}</span>
                     )}

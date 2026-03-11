@@ -1,4 +1,4 @@
-import { Check, Plus, Target } from "@phosphor-icons/react";
+import { CheckIcon, PlusIcon, TargetIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { useGoalsList } from "@/entities/goal/api/use-goals-list";
@@ -95,7 +95,7 @@ export function GoalsPage() {
           <CardTitle className="font-medium text-sm">
             Overall Progress
           </CardTitle>
-          <Target className="h-4 w-4 text-muted-foreground" />
+          <TargetIcon className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
           <div className="flex items-baseline gap-2">
@@ -126,11 +126,11 @@ export function GoalsPage() {
         ) : (
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-12">
-              <Target className="h-12 w-12 text-muted-foreground" />
+              <TargetIcon className="h-12 w-12 text-muted-foreground" />
               <p className="mt-4 text-muted-foreground">No active goals</p>
               <CreateGoalDialog>
                 <Button className="mt-4" variant="outline">
-                  <Plus className="mr-2" data-icon="inline-start" />
+                  <PlusIcon className="mr-2" data-icon="inline-start" />
                   Create your first goal
                 </Button>
               </CreateGoalDialog>
@@ -147,7 +147,7 @@ export function GoalsPage() {
             onClick={() => setShowCompleted(!showCompleted)}
             variant="ghost"
           >
-            <Check className="mr-2" weight="bold" />
+            <CheckIcon className="mr-2" weight="bold" />
             {showCompleted ? "Hide" : "Show"} Completed ({completedGoals.length}
             )
           </Button>

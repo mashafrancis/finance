@@ -1,7 +1,7 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
-import { Plus, Trash } from "@phosphor-icons/react";
+import { PlusIcon, TrashIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
@@ -160,7 +160,7 @@ export default function StepAccounts() {
         </div>
 
         <Button className="w-full" disabled={isAdding} onClick={handleAdd}>
-          <Plus className="mr-2" data-icon="inline-start" />
+          <PlusIcon className="mr-2" data-icon="inline-start" />
           Add Account
         </Button>
       </div>
@@ -188,7 +188,7 @@ export default function StepAccounts() {
                   size="icon"
                   variant="ghost"
                 >
-                  <Trash weight="bold" aria-hidden />
+                  <TrashIcon weight="bold" aria-hidden />
                 </Button>
               </div>
             ))}

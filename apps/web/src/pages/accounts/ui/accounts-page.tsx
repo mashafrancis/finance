@@ -1,4 +1,9 @@
-import { Archive, Bank, Plus, Wallet } from "@phosphor-icons/react";
+import {
+  ArchiveIcon,
+  BankIcon,
+  PlusIcon,
+  WalletIcon,
+} from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
@@ -93,7 +98,7 @@ export function AccountsPage() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle className="font-medium text-sm">Total Balance</CardTitle>
-          <Bank className="h-4 w-4 text-muted-foreground" weight="bold" />
+          <BankIcon className="h-4 w-4 text-muted-foreground" weight="bold" />
         </CardHeader>
         <CardContent>
           <div className="font-bold text-2xl">
@@ -117,11 +122,11 @@ export function AccountsPage() {
         ) : (
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-12">
-              <Wallet className="h-12 w-12 text-muted-foreground" />
+              <WalletIcon className="h-12 w-12 text-muted-foreground" />
               <p className="mt-4 text-muted-foreground">No accounts yet</p>
               <CreateAccountDialog>
                 <Button className="mt-4" variant="outline">
-                  <Plus className="mr-2" data-icon="inline-start" />
+                  <PlusIcon className="mr-2" data-icon="inline-start" />
                   Add your first account
                 </Button>
               </CreateAccountDialog>
@@ -138,7 +143,7 @@ export function AccountsPage() {
             onClick={() => setShowArchived(!showArchived)}
             variant="ghost"
           >
-            <Archive weight="bold" className="mr-2" />
+            <ArchiveIcon weight="bold" className="mr-2" />
             {showArchived ? "Hide" : "Show"} Archived ({archivedAccounts.length}
             )
           </Button>

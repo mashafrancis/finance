@@ -1,5 +1,5 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { Wallet } from "@phosphor-icons/react";
+import { WalletIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
@@ -60,7 +60,7 @@ export function AccountForm() {
     <Card>
       <CardHeader>
         <div className="flex items-center gap-2">
-          <Wallet className="h-5 w-5" />
+          <WalletIcon className="h-5 w-5" />
           <CardTitle>Accounts</CardTitle>
         </div>
         <CardDescription>

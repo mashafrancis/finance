@@ -1,7 +1,7 @@
 import { useForm } from "@tanstack/react-form";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { Schema } from "effect";
-import { Plus } from "@phosphor-icons/react";
+import { PlusIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useCreateSubscription } from "@/entities/subscription/api/use-create-subscription";
@@ -84,7 +84,7 @@ export function CreateSubscriptionDialog({
       <DialogTrigger asChild>
         {children || (
           <Button disabled={accounts.length === 0}>
-            <Plus className="mr-2" data-icon="inline-start" />
+            <PlusIcon className="mr-2" data-icon="inline-start" />
             Add Subscription
           </Button>
         )}

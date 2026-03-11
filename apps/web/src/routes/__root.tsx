@@ -8,6 +8,7 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { createServerFn } from "@tanstack/react-start";
 import { ConvexProvider } from "@/app/providers/convex-provider";
+import { IconProvider } from "@/app/providers/icon-provider";
 import { QueryProvider } from "@/app/providers/query-provider";
 import appCss from "@/app/styles/index.css?url";
 import type { RouterAppContext } from "@/app/types/router-app-context";
@@ -92,10 +93,12 @@ function RootDocument() {
             <HeadContent />
           </head>
           <body>
-            <Outlet />
-            <Toaster richColors />
-            <TanStackRouterDevtools position="bottom-left" />
-            <Scripts />
+            <IconProvider>
+              <Outlet />
+              <Toaster richColors />
+              <TanStackRouterDevtools position="bottom-left" />
+              <Scripts />
+            </IconProvider>
           </body>
         </html>
       </QueryProvider>

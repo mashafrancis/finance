@@ -1,7 +1,7 @@
 import { useForm } from "@tanstack/react-form";
 
 import { Schema } from "effect";
-import { Plus } from "@phosphor-icons/react";
+import { PlusIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useCreateAccount } from "@/entities/account/api/use-create-account";
@@ -74,7 +74,7 @@ export function CreateAccountDialog({
       <DialogTrigger asChild>
         {children || (
           <Button>
-            <Plus weight="bold" data-icon="inline-start" />
+            <PlusIcon weight="bold" data-icon="inline-start" />
             Add Account
           </Button>
         )}

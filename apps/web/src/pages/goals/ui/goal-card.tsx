@@ -1,5 +1,5 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { DotsThree, Plus } from "@phosphor-icons/react";
+import { DotsThreeIcon, PlusIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { CompleteGoalMenuItem } from "@/features/complete-goal/ui/complete-goal-menu-item";
@@ -62,14 +62,14 @@ export function GoalCard({ goal, isCompleted = false }: GoalCardProps) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button aria-label="Goal options" size="icon" variant="ghost">
-              <DotsThree weight="bold" aria-hidden />
+              <DotsThreeIcon weight="bold" aria-hidden />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {!isCompleted && (
               <>
                 <DropdownMenuItem onClick={() => setShowAddProgress(true)}>
-                  <Plus className="mr-2" data-icon="inline-start" />
+                  <PlusIcon className="mr-2" data-icon="inline-start" />
                   Add Progress
                 </DropdownMenuItem>
                 <CompleteGoalMenuItem goalId={goal._id} />

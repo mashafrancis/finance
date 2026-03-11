@@ -3,7 +3,7 @@ import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
 import { Schema } from "effect";
-import { Plus } from "@phosphor-icons/react";
+import { PlusIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -103,7 +103,7 @@ export function CreateTransactionDialog({
       <DialogTrigger asChild>
         {children || (
           <Button disabled={accounts.length === 0}>
-            <Plus className="mr-2" data-icon="inline-start" />
+            <PlusIcon className="mr-2" data-icon="inline-start" />
             Add Transaction
           </Button>
         )}

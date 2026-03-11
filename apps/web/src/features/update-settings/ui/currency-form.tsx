@@ -1,4 +1,4 @@
-import { CurrencyDollar } from "@phosphor-icons/react";
+import { CurrencyDollarIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { useUpdateSettings } from "@/entities/user-settings/api/use-update-settings";
@@ -58,7 +58,7 @@ export function CurrencyForm() {
     <Card>
       <CardHeader>
         <div className="flex items-center gap-2">
-          <CurrencyDollar className="h-5 w-5" weight="bold" />
+          <CurrencyDollarIcon className="h-5 w-5" weight="bold" />
           <CardTitle>Currency</CardTitle>
         </div>
         <CardDescription>

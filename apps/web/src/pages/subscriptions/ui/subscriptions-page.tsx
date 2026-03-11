@@ -1,4 +1,10 @@
-import { Calendar, CurrencyDollar, Pause, Play, Plus } from "@phosphor-icons/react";
+import {
+  CalendarIcon,
+  CurrencyDollarIcon,
+  PauseIcon,
+  PlayIcon,
+  PlusIcon,
+} from "@phosphor-icons/react";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
 import { useCategoriesList } from "@/entities/category/api/use-categories-list";
@@ -101,7 +107,7 @@ export function SubscriptionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="font-medium text-sm">Monthly Cost</CardTitle>
-            <CurrencyDollar className="h-4 w-4 text-muted-foreground" weight="bold" />
+            <CurrencyDollarIcon className="h-4 w-4 text-muted-foreground" weight="bold" />
           </CardHeader>
           <CardContent>
             <div className="font-bold text-2xl">
@@ -113,7 +119,7 @@ export function SubscriptionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="font-medium text-sm">Active</CardTitle>
-            <Play className="h-4 w-4 text-chart-2" />
+            <PlayIcon className="h-4 w-4 text-chart-2" />
           </CardHeader>
           <CardContent>
             <div className="font-bold text-2xl">{activeCount}</div>
@@ -123,7 +129,7 @@ export function SubscriptionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="font-medium text-sm">Paused</CardTitle>
-            <Pause className="h-4 w-4 text-chart-4" />
+            <PauseIcon className="h-4 w-4 text-chart-4" />
           </CardHeader>
           <CardContent>
             <div className="font-bold text-2xl">{pausedCount}</div>
@@ -146,14 +152,14 @@ export function SubscriptionsPage() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-12">
-              <Calendar className="h-12 w-12 text-muted-foreground" />
+              <CalendarIcon className="h-12 w-12 text-muted-foreground" />
               <p className="mt-4 text-muted-foreground">No subscriptions yet</p>
               <CreateSubscriptionDialog
                 accounts={accounts}
                 categories={categories}
               >
                 <Button className="mt-4" variant="outline">
-                  <Plus className="mr-2" data-icon="inline-start" />
+                  <PlusIcon className="mr-2" data-icon="inline-start" />
                   Add your first subscription
                 </Button>
               </CreateSubscriptionDialog>

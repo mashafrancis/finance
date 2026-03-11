@@ -1,5 +1,5 @@
 import { Authenticated, Unauthenticated } from "convex/react";
-import { Wallet } from "@phosphor-icons/react";
+import { WalletIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -38,7 +38,7 @@ export function LoginPage() {
           <div className="flex flex-col justify-between bg-foreground p-8 text-background lg:p-12">
             <div>
               <div className="flex items-center gap-2 font-bold text-xl">
-                <Wallet className="h-6 w-6" />
+                <WalletIcon className="h-6 w-6" />
                 <span>Plutus</span>
               </div>
             </div>

@@ -1,12 +1,12 @@
 import type { Icon } from "@phosphor-icons/react";
 import {
-  Lightning,
-  ArrowUpRight,
-  ArrowsClockwise,
-  Target,
-  Trash,
-  TrendUp,
-  Wallet,
+  LightningIcon,
+  ArrowUpRightIcon,
+  ArrowsClockwiseIcon,
+  TargetIcon,
+  TrashIcon,
+  TrendUpIcon,
+  WalletIcon,
 } from "@phosphor-icons/react";
 
 import { useActivitiesGet } from "@/entities/activity/api/use-activities-get";
@@ -17,22 +17,22 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 function getActivityIcon(type: string, entityType: string): Icon {
   if (type.startsWith("delete_")) {
-    return Trash;
+    return TrashIcon;
   }
 
   switch (entityType) {
     case "account":
-      return Wallet;
+      return WalletIcon;
     case "transaction":
-      return ArrowUpRight; // Default, logic can be refined if we had transaction type in metadata
+      return ArrowUpRightIcon; // Default, logic can be refined if we had transaction type in metadata
     case "investment":
-      return TrendUp;
+      return TrendUpIcon;
     case "goal":
-      return Target;
+      return TargetIcon;
     case "subscription":
-      return ArrowsClockwise;
+      return ArrowsClockwiseIcon;
     default:
-      return Lightning;
+      return LightningIcon;
   }
 }
 
@@ -84,7 +84,7 @@ export function ActivityPopover() {
           size="icon"
           variant="outline"
         >
-          <Lightning weight="bold" data-icon="inline-start" aria-hidden />
+          <LightningIcon weight="bold" data-icon="inline-start" aria-hidden />
           <span className="sr-only">Toggle activity feed</span>
         </Button>
       </PopoverTrigger>

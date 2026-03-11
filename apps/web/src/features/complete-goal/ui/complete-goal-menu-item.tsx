@@ -1,4 +1,4 @@
-import { Check } from "@phosphor-icons/react";
+import { CheckIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { useCompleteGoal } from "@/entities/goal/api/use-complete-goal";
 import type { GoalId } from "@/entities/goal/types/goal-id";
@@ -25,7 +25,7 @@ export function CompleteGoalMenuItem({ goalId }: CompleteGoalMenuItemProps) {
 
   return (
     <DropdownMenuItem onClick={handleMarkComplete}>
-      <Check className="mr-2 h-4 w-4" />
+      <CheckIcon className="mr-2 h-4 w-4" />
       Mark Complete
     </DropdownMenuItem>
   );

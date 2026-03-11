@@ -1,5 +1,5 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { DotsThree, PencilSimple } from "@phosphor-icons/react";
+import { DotsThreeIcon, PencilSimpleIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import {
@@ -82,12 +82,12 @@ export function TransactionRow({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button aria-label="Transaction options" size="icon" variant="ghost">
-                <DotsThree weight="bold" aria-hidden />
+                <DotsThreeIcon weight="bold" aria-hidden />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => setEditDialogOpen(true)}>
-                <PencilSimple weight="bold" className="mr-2" />
+                <PencilSimpleIcon weight="bold" className="mr-2" />
                 Edit
               </DropdownMenuItem>
               <DropdownMenuSeparator />

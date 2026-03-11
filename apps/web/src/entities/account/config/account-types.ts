@@ -1,14 +1,19 @@
-import { CreditCard, PiggyBank, TrendUp, Wallet } from "@phosphor-icons/react";
+import {
+  CreditCardIcon,
+  PiggyBankIcon,
+  TrendUpIcon,
+  WalletIcon,
+} from "@phosphor-icons/react";
 import type { AccountType } from "../types/account-id";
 
 export const ACCOUNT_TYPES: {
   value: AccountType;
   label: string;
-  icon: typeof CreditCard;
+  icon: typeof CreditCardIcon;
 }[] = [
-  { value: "checking", label: "Checking", icon: CreditCard },
-  { value: "savings", label: "Savings", icon: PiggyBank },
-  { value: "credit", label: "Credit Card", icon: CreditCard },
-  { value: "cash", label: "Cash", icon: Wallet },
-  { value: "investment", label: "Investment", icon: TrendUp },
+  { value: "checking", label: "Checking", icon: CreditCardIcon },
+  { value: "savings", label: "Savings", icon: PiggyBankIcon },
+  { value: "credit", label: "Credit Card", icon: CreditCardIcon },
+  { value: "cash", label: "Cash", icon: WalletIcon },
+  { value: "investment", label: "Investment", icon: TrendUpIcon },
 ];

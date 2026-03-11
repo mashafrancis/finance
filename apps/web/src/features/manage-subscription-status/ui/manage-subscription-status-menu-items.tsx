@@ -1,4 +1,4 @@
-import { Pause, Play, X } from "@phosphor-icons/react";
+import { PauseIcon, PlayIcon, XIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import {
   useCancelSubscription,
@@ -55,19 +55,19 @@ export function ManageSubscriptionStatusMenuItems({
     <>
       {status === "active" && (
         <DropdownMenuItem onClick={handlePause}>
-          <Pause className="mr-2 h-4 w-4" />
+          <PauseIcon className="mr-2 h-4 w-4" />
           Pause
         </DropdownMenuItem>
       )}
       {status === "paused" && (
         <DropdownMenuItem onClick={handleResume}>
-          <Play className="mr-2 h-4 w-4" />
+          <PlayIcon className="mr-2 h-4 w-4" />
           Resume
         </DropdownMenuItem>
       )}
       {status !== "cancelled" && (
         <DropdownMenuItem onClick={handleCancel}>
-          <X className="mr-2 h-4 w-4" />
+          <XIcon className="mr-2 h-4 w-4" />
           Cancel
         </DropdownMenuItem>
       )}

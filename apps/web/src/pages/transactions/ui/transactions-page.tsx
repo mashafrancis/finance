@@ -1,4 +1,8 @@
-import { Funnel, Plus, MagnifyingGlass } from "@phosphor-icons/react";
+import {
+  FunnelIcon,
+  PlusIcon,
+  MagnifyingGlassIcon,
+} from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
@@ -125,7 +129,7 @@ export function TransactionsPage() {
           </CardDescription>
           <div className="flex flex-wrap items-center gap-4 pt-4">
             <div className="relative flex-1">
-              <MagnifyingGlass className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" weight="bold" />
+              <MagnifyingGlassIcon className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" weight="bold" />
               <Input
                 className="pl-9"
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -150,7 +154,7 @@ export function TransactionsPage() {
           {!filteredTransactions && <TransactionsTableSkeleton />}
           {filteredTransactions && filteredTransactions.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <Funnel className="h-12 w-12 text-muted-foreground" weight="bold" />
+              <FunnelIcon className="h-12 w-12 text-muted-foreground" weight="bold" />
               <p className="mt-4 text-muted-foreground">
                 No transactions found
               </p>
@@ -160,7 +164,7 @@ export function TransactionsPage() {
                   categories={categories}
                 >
                   <Button className="mt-4" variant="outline">
-                    <Plus className="mr-2" data-icon="inline-start" />
+                    <PlusIcon className="mr-2" data-icon="inline-start" />
                     Add your first transaction
                   </Button>
                 </CreateTransactionDialog>

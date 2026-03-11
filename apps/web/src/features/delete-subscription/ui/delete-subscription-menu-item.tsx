@@ -1,4 +1,4 @@
-import { Trash } from "@phosphor-icons/react";
+import { TrashIcon } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { useDeleteSubscription } from "@/entities/subscription/api/use-delete-subscription";
 import type { SubscriptionId } from "@/entities/subscription/types/subscription-id";
@@ -24,7 +24,7 @@ export function DeleteSubscriptionMenuItem({
 
   return (
     <DropdownMenuItem className="text-destructive" onClick={handleDelete}>
-      <Trash weight="bold" className="mr-2" />
+      <TrashIcon weight="bold" className="mr-2" />
       Delete
     </DropdownMenuItem>
   );

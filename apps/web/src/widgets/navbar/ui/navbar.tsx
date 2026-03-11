@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { House } from "@phosphor-icons/react";
+import { HouseIcon } from "@phosphor-icons/react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -72,7 +72,7 @@ export function Navbar() {
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
                     <Link aria-label="Go to dashboard" to="/dashboard">
-                      <House weight="bold" aria-hidden />
+                      <HouseIcon weight="bold" aria-hidden />
                     </Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>

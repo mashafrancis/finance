@@ -87,7 +87,7 @@ export const create = mutation({
           });
 
           if (!account || account.userId !== user.subject) {
-            return yield* Effect.fail(new NotFoundError({ docId: accountId }));
+            return yield* new NotFoundError({ docId: accountId });
           }
         }
 
@@ -148,7 +148,7 @@ export const update = mutation({
         });
 
         if (!goal || goal.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         const updates: Partial<Doc<"goals">> = {};
@@ -205,7 +205,7 @@ export const addProgress = mutation({
         });
 
         if (!goal || goal.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         const newAmount = goal.currentAmount + args.amount;
@@ -239,7 +239,7 @@ export const markComplete = mutation({
         });
 
         if (!goal || goal.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -266,7 +266,7 @@ export const remove = mutation({
         });
 
         if (!goal || goal.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({

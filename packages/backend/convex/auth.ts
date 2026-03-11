@@ -10,7 +10,7 @@ import type { DataModel } from "./_generated/dataModel";
 import { query } from "./_generated/server";
 import authConfig from "./auth.config";
 
-const siteUrl = process.env.SITE_URL ?? "http://localhost:3001";
+const siteUrl = process.env.SITE_URL ?? "http://localhost:3000";
 
 const authFunctions: AuthFunctions = internal.auth;
 
@@ -56,19 +56,23 @@ function createAuth(
   ctx: GenericCtx<DataModel>,
   { optionsOnly } = { optionsOnly: false }
 ) {
+  const googleClientId = process.env.GOOGLE_CLIENT_ID;
+  const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
+  if (!googleClientId || !googleClientSecret) {
+    throw new Error(
+      "Google OAuth is required. Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in Convex env (npx convex env set GOOGLE_CLIENT_ID=... GOOGLE_CLIENT_SECRET=...)."
+    );
+  }
+
   return betterAuth({
     secret: process.env.BETTER_AUTH_SECRET,
     baseURL: siteUrl,
     trustedOrigins: [siteUrl],
     database: authComponent.adapter(ctx),
-    emailAndPassword: {
-      enabled: true,
-      requireEmailVerification: false,
-    },
     socialProviders: {
       google: {
-        clientId: process.env.GOOGLE_CLIENT_ID || "",
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+        clientId: googleClientId,
+        clientSecret: googleClientSecret,
       },
     },
     plugins: [

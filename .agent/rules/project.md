@@ -26,7 +26,7 @@ globs: **/*.{ts,tsx,js,jsx,json,jsonc,html,vue,svelte,astro,css,yaml,yml,graphql
 - **Web App**: `apps/web/` (Tanstack Start + Effect Atom + shadcn/ui + BaseUI).
 - **Backend**: `packages/backend/` (Convex + Confect).
 - **Auth**: Convex Auth (frontend) & `packages/backend/convex/lib/policies.ts` (backend/policies).
-- **Dev URL**: `http://localhost:3001`
+- **Dev URL**: `http://localhost:3000`
 
 ## WORKFLOW MODES
 

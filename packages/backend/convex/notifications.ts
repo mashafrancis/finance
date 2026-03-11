@@ -113,7 +113,7 @@ export const markAsRead = mutation({
         });
 
         if (!notification || notification.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -170,7 +170,7 @@ export const remove = mutation({
         });
 
         if (!notification || notification.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({

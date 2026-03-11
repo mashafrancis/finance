@@ -134,7 +134,7 @@ export const update = mutation({
         });
 
         if (!category || category.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -166,7 +166,7 @@ export const remove = mutation({
         });
 
         if (!category || category.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({

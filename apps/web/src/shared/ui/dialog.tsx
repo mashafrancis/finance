@@ -2,7 +2,12 @@
 
 import { Dialog as BaseDialog } from "@base-ui/react/dialog";
 import { X } from "lucide-react";
-import { cloneElement, isValidElement } from "react";
+import {
+  type ComponentProps,
+  type ReactElement,
+  cloneElement,
+  isValidElement,
+} from "react";
 import { cn } from "@/shared/lib/utils";
 
 const Dialog = BaseDialog.Root;
@@ -10,7 +15,7 @@ const DialogPortal = BaseDialog.Portal;
 const DialogClose = BaseDialog.Close;
 
 interface DialogTriggerProps
-  extends React.ComponentProps<typeof BaseDialog.Trigger> {
+  extends ComponentProps<typeof BaseDialog.Trigger> {
   asChild?: boolean;
 }
 
@@ -19,11 +24,11 @@ function DialogTrigger({ asChild, children, ...props }: DialogTriggerProps) {
     return (
       <BaseDialog.Trigger
         render={(triggerProps) => {
-          const childProps = (children as React.ReactElement).props as Record<
+          const childProps = (children as ReactElement).props as Record<
             string,
             unknown
           >;
-          return cloneElement(children as React.ReactElement, {
+          return cloneElement(children as ReactElement, {
             ...triggerProps,
             ...childProps,
           });
@@ -38,7 +43,7 @@ function DialogTrigger({ asChild, children, ...props }: DialogTriggerProps) {
 function DialogBackdrop({
   className,
   ...props
-}: React.ComponentProps<typeof BaseDialog.Backdrop>) {
+}: ComponentProps<typeof BaseDialog.Backdrop>) {
   return (
     <BaseDialog.Backdrop
       className={cn(
@@ -54,7 +59,7 @@ function DialogContent({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof BaseDialog.Popup>) {
+}: ComponentProps<typeof BaseDialog.Popup>) {
   return (
     <DialogPortal>
       <DialogBackdrop />
@@ -75,7 +80,7 @@ function DialogContent({
   );
 }
 
-function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+function DialogHeader({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
@@ -87,7 +92,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
+function DialogFooter({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
@@ -102,7 +107,7 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
 function DialogTitle({
   className,
   ...props
-}: React.ComponentProps<typeof BaseDialog.Title>) {
+}: ComponentProps<typeof BaseDialog.Title>) {
   return (
     <BaseDialog.Title
       className={cn(
@@ -117,7 +122,7 @@ function DialogTitle({
 function DialogDescription({
   className,
   ...props
-}: React.ComponentProps<typeof BaseDialog.Description>) {
+}: ComponentProps<typeof BaseDialog.Description>) {
   return (
     <BaseDialog.Description
       className={cn("text-muted-foreground text-sm", className)}

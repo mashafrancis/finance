@@ -100,9 +100,7 @@ export const create = mutation({
         });
 
         if (!account || account.userId !== user.subject) {
-          return yield* Effect.fail(
-            new NotFoundError({ docId: args.accountId })
-          );
+          return yield* new NotFoundError({ docId: args.accountId });
         }
 
         const nextRenewalDate = calculateNextRenewalDate(
@@ -178,7 +176,7 @@ export const update = mutation({
         });
 
         if (!subscription || subscription.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         const updates: Partial<Doc<"subscriptions">> = {};
@@ -229,7 +227,7 @@ export const pause = mutation({
         });
 
         if (!subscription || subscription.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -256,7 +254,7 @@ export const resume = mutation({
         });
 
         if (!subscription || subscription.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         // Update next renewal date if it's in the past
@@ -293,7 +291,7 @@ export const cancel = mutation({
         });
 
         if (!subscription || subscription.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -320,7 +318,7 @@ export const remove = mutation({
         });
 
         if (!subscription || subscription.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({

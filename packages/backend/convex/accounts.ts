@@ -144,7 +144,7 @@ export const update = mutation({
         });
 
         if (!account || account.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -180,7 +180,7 @@ export const updateBalance = mutation({
         });
 
         if (!account || account.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -210,7 +210,7 @@ export const adjustBalance = mutation({
         });
 
         if (!account || account.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         const newBalance = account.balance + args.amount;
@@ -239,7 +239,7 @@ export const archive = mutation({
         });
 
         if (!account || account.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -266,7 +266,7 @@ export const unarchive = mutation({
         });
 
         if (!account || account.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -293,7 +293,7 @@ export const remove = mutation({
         });
 
         if (!account || account.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         // Check for linked transactions

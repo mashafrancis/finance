@@ -127,9 +127,7 @@ export const create = mutation({
         });
 
         if (!account || account.userId !== user.subject) {
-          return yield* Effect.fail(
-            new NotFoundError({ docId: args.accountId })
-          );
+          return yield* new NotFoundError({ docId: args.accountId });
         }
 
         // Convert currency if needed
@@ -236,7 +234,7 @@ export const update = mutation({
         });
 
         if (!transaction || transaction.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         yield* Effect.tryPromise({
@@ -273,7 +271,7 @@ export const remove = mutation({
         });
 
         if (!transaction || transaction.userId !== user.subject) {
-          return yield* Effect.fail(new NotFoundError({ docId: args.id }));
+          return yield* new NotFoundError({ docId: args.id });
         }
 
         // Reverse balance change on account

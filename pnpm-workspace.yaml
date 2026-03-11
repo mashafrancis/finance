@@ -1,0 +1,13 @@
+packages:
+  - apps/*
+  - packages/*
+catalog:
+  dotenv: ^17.2.4
+  typescript: ^5.0.4
+  convex: ^1.31.7
+  better-auth: 1.4.9
+  "@convex-dev/better-auth": ^0.10.13
+  "@types/node": ^24.10.15
+  "effect": "^3.19.19"
+  "@effect/language-service": "^0.79.0"
+  zod: ^4.3.6

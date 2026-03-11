@@ -1,20 +1,20 @@
-import { Check, Plus, Target } from "lucide-react";
+import { Check, Plus, Target } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { useGoalsList } from "@/entities/goal/api/use-goals-list";
 import { CreateGoalDialog } from "@/features/create-goal/ui/create-goal-dialog";
 import { formatCurrency } from "@/shared/lib/format/currency";
 import { formatPercent } from "@/shared/lib/format/percent";
-import { Button } from "@/shared/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
-import { Progress } from "@/shared/ui/progress";
-import { Skeleton } from "@/shared/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { GoalCard } from "./goal-card";
 
 export function GoalsPageSkeleton() {
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <Skeleton className="h-8 w-24" />
@@ -78,7 +78,7 @@ export function GoalsPage() {
     totalTarget > 0 ? (totalProgress / totalTarget) * 100 : 0;
 
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-2xl tracking-tight">Goals</h1>
@@ -130,7 +130,7 @@ export function GoalsPage() {
               <p className="mt-4 text-muted-foreground">No active goals</p>
               <CreateGoalDialog>
                 <Button className="mt-4" variant="outline">
-                  <Plus className="mr-2 h-4 w-4" />
+                  <Plus className="mr-2" data-icon="inline-start" />
                   Create your first goal
                 </Button>
               </CreateGoalDialog>
@@ -147,7 +147,7 @@ export function GoalsPage() {
             onClick={() => setShowCompleted(!showCompleted)}
             variant="ghost"
           >
-            <Check className="mr-2 h-4 w-4" />
+            <Check className="mr-2" weight="bold" />
             {showCompleted ? "Hide" : "Show"} Completed ({completedGoals.length}
             )
           </Button>

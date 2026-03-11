@@ -1,8 +1,8 @@
-import { Trash2 } from "lucide-react";
+import { Trash } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { useDeleteSubscription } from "@/entities/subscription/api/use-delete-subscription";
 import type { SubscriptionId } from "@/entities/subscription/types/subscription-id";
-import { DropdownMenuItem } from "@/shared/ui/dropdown-menu";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 interface DeleteSubscriptionMenuItemProps {
   subscriptionId: SubscriptionId;
@@ -24,7 +24,7 @@ export function DeleteSubscriptionMenuItem({
 
   return (
     <DropdownMenuItem className="text-destructive" onClick={handleDelete}>
-      <Trash2 className="mr-2 h-4 w-4" />
+      <Trash weight="bold" className="mr-2" />
       Delete
     </DropdownMenuItem>
   );

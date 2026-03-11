@@ -3,29 +3,29 @@ import type { Doc } from "@tanstack-effect-convex/backend/convex/_generated/data
 import { useMutation } from "convex/react";
 import {
   Archive,
-  ArchiveRestore,
+  ArrowCounterClockwise,
   CreditCard,
-  MoreHorizontal,
-} from "lucide-react";
+  DotsThree,
+} from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { ACCOUNT_TYPES } from "@/entities/account/config/account-types";
 import { DeleteAccountMenuItem } from "@/features/delete-account/ui/delete-account-menu-item";
 import { formatCurrency } from "@/shared/lib/format/currency";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
+} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 interface AccountCardProps {
   account: Doc<"accounts">;
@@ -73,19 +73,19 @@ export function AccountCard({ account, isArchived = false }: AccountCardProps) {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button size="icon" variant="ghost">
-              <MoreHorizontal className="h-4 w-4" />
+            <Button aria-label="Account options" size="icon" variant="ghost">
+              <DotsThree weight="bold" aria-hidden />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {isArchived ? (
               <DropdownMenuItem onClick={handleUnarchive}>
-                <ArchiveRestore className="mr-2 h-4 w-4" />
+                <ArrowCounterClockwise weight="bold" className="mr-2" />
                 Restore
               </DropdownMenuItem>
             ) : (
               <DropdownMenuItem onClick={handleArchive}>
-                <Archive className="mr-2 h-4 w-4" />
+                <Archive weight="bold" className="mr-2" />
                 Archive
               </DropdownMenuItem>
             )}

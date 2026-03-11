@@ -1,9 +1,9 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
-import { Trash2 } from "lucide-react";
+import { Trash } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { DropdownMenuItem } from "@/shared/ui/dropdown-menu";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 interface DeleteTransactionButtonProps {
   transactionId: Id<"transactions">;
@@ -28,7 +28,7 @@ export function DeleteTransactionButton({
       className="text-destructive focus:text-destructive"
       onClick={handleDelete}
     >
-      <Trash2 className="mr-2 h-4 w-4" />
+      <Trash weight="bold" className="mr-2" />
       Delete
     </DropdownMenuItem>
   );

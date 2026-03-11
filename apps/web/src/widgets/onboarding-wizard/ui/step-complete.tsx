@@ -1,9 +1,9 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle } from "@phosphor-icons/react";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
 import { useCategoriesList } from "@/entities/category/api/use-categories-list";
 import { useTransactionsList } from "@/entities/transaction/api/use-transactions-list";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 
 interface StepCompleteProps {
   onNext: () => void;
@@ -23,12 +23,12 @@ export default function StepComplete({
   const transactionCount = transactions?.length || 0;
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 py-8 text-center">
-      <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-500/10">
-        <CheckCircle2 className="h-10 w-10 text-green-500" />
+    <div className="flex flex-col items-center justify-center gap-6 py-8 text-center">
+      <div className="flex h-20 w-20 items-center justify-center rounded-full bg-chart-2/10">
+        <CheckCircle className="h-10 w-10 text-chart-2" weight="fill" />
       </div>
 
-      <div className="space-y-2">
+      <div className="flex flex-col gap-2">
         <h2 className="font-bold text-3xl">You're all set!</h2>
         <p className="mx-auto max-w-md text-muted-foreground">
           Your financial tracking is ready to go. Here's what you've set up:
@@ -51,7 +51,7 @@ export default function StepComplete({
       </div>
 
       <div className="flex w-full max-w-md flex-col items-center text-left text-muted-foreground text-sm">
-        <div className="space-y-3">
+        <div className="flex flex-col gap-3">
           <p>✨ Start tracking your expenses and income</p>
           <p>📊 View insights on your dashboard</p>
           <p>🎯 Set financial goals and monitor progress</p>

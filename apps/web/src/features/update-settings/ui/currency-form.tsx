@@ -1,4 +1,4 @@
-import { DollarSign } from "lucide-react";
+import { CurrencyDollar } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { useUpdateSettings } from "@/entities/user-settings/api/use-update-settings";
@@ -10,16 +10,16 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
-import { Label } from "@/shared/ui/label";
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
-import { Skeleton } from "@/shared/ui/skeleton";
+} from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function CurrencyForm() {
   const { data: settings } = useUserSettings();
@@ -58,14 +58,14 @@ export function CurrencyForm() {
     <Card>
       <CardHeader>
         <div className="flex items-center gap-2">
-          <DollarSign className="h-5 w-5" />
+          <CurrencyDollar className="h-5 w-5" weight="bold" />
           <CardTitle>Currency</CardTitle>
         </div>
         <CardDescription>
           Set your base currency for calculations and display
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <Label htmlFor="currency">Base Currency</Label>
           <Select

@@ -12,7 +12,7 @@ import { QueryProvider } from "@/app/providers/query-provider";
 import appCss from "@/app/styles/index.css?url";
 import type { RouterAppContext } from "@/app/types/router-app-context";
 import { getToken } from "@/shared/config/auth-server";
-import { Toaster } from "@/shared/ui/sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 const getAuth = createServerFn({ method: "GET" }).handler(async () => {
   return await getToken();
@@ -32,13 +32,35 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "Pouchy - Personal Finance",
+        title: "Plutus - Personal Finance",
       },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      {
+        href: "/favicon-16x16.png",
+        rel: "icon",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        href: "/favicon-32x32.png",
+        rel: "icon",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      { href: "/favicon.ico", rel: "shortcut icon" },
+      {
+        href: "/apple-touch-icon.png",
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+      },
+      {
+        href: "/favicon.ico",
+        rel: "icon",
       },
     ],
   }),

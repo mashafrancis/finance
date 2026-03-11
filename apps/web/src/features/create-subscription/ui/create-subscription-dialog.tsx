@@ -1,11 +1,11 @@
 import { useForm } from "@tanstack/react-form";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { Schema } from "effect";
-import { Plus } from "lucide-react";
+import { Plus } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useCreateSubscription } from "@/entities/subscription/api/use-create-subscription";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -14,16 +14,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
+} from "@/components/ui/select";
 import {
   FREQUENCIES,
   SubscriptionFormSchema,
@@ -84,7 +84,7 @@ export function CreateSubscriptionDialog({
       <DialogTrigger asChild>
         {children || (
           <Button disabled={accounts.length === 0}>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className="mr-2" data-icon="inline-start" />
             Add Subscription
           </Button>
         )}
@@ -97,7 +97,7 @@ export function CreateSubscriptionDialog({
           </DialogDescription>
         </DialogHeader>
         <form
-          className="space-y-4"
+          className="flex flex-col gap-4"
           onSubmit={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -106,7 +106,7 @@ export function CreateSubscriptionDialog({
         >
           <form.Field name="name">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="name">Name</Label>
                 <Input
                   id="name"
@@ -126,7 +126,7 @@ export function CreateSubscriptionDialog({
 
           <form.Field name="accountId">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="account">Account</Label>
                 <Select
                   items={accounts.map((a) => ({
@@ -164,7 +164,7 @@ export function CreateSubscriptionDialog({
 
           <form.Field name="categoryId">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="category">Category</Label>
                 <Select
                   items={categories.map((c) => ({
@@ -203,7 +203,7 @@ export function CreateSubscriptionDialog({
           <div className="grid grid-cols-2 gap-4">
             <form.Field name="amount">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="amount">Amount</Label>
                   <Input
                     id="amount"
@@ -229,7 +229,7 @@ export function CreateSubscriptionDialog({
 
             <form.Field name="frequency">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="frequency">Frequency</Label>
                   <Select
                     items={FREQUENCIES.map((f) => ({
@@ -267,7 +267,7 @@ export function CreateSubscriptionDialog({
 
           <form.Field name="startDate">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="startDate">Start Date</Label>
                 <Input
                   id="startDate"
@@ -296,7 +296,7 @@ export function CreateSubscriptionDialog({
             <form.Subscribe>
               {(state) => (
                 <Button disabled={state.isSubmitting} type="submit">
-                  {state.isSubmitting ? "Adding..." : "Add Subscription"}
+                  {state.isSubmitting ? "Adding…" : "Add Subscription"}
                 </Button>
               )}
             </form.Subscribe>

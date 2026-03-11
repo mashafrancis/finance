@@ -1,13 +1,13 @@
 import { useForm } from "@tanstack/react-form";
 
 import { Schema } from "effect";
-import { Plus } from "lucide-react";
+import { Plus } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useCreateAccount } from "@/entities/account/api/use-create-account";
 import { ACCOUNT_TYPES } from "@/entities/account/config/account-types";
 import { CURRENCIES } from "@/shared/config/currencies";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -16,16 +16,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
+} from "@/components/ui/select";
 
 import { AccountFormSchema } from "../model/account-form-schema";
 
@@ -74,7 +74,7 @@ export function CreateAccountDialog({
       <DialogTrigger asChild>
         {children || (
           <Button>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus weight="bold" data-icon="inline-start" />
             Add Account
           </Button>
         )}
@@ -87,7 +87,7 @@ export function CreateAccountDialog({
           </DialogDescription>
         </DialogHeader>
         <form
-          className="space-y-4"
+          className="flex flex-col gap-4"
           onSubmit={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -96,7 +96,7 @@ export function CreateAccountDialog({
         >
           <form.Field name="name">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="create-account-name">Account Name</Label>
                 <Input
                   id="create-account-name"
@@ -116,7 +116,7 @@ export function CreateAccountDialog({
 
           <form.Field name="type">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="create-account-type">Account Type</Label>
                 <Select
                   items={ACCOUNT_TYPES.map((t) => ({
@@ -153,7 +153,7 @@ export function CreateAccountDialog({
 
           <form.Field name="currency">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="create-account-currency">Currency</Label>
                 <Select
                   items={CURRENCIES}
@@ -182,7 +182,7 @@ export function CreateAccountDialog({
 
           <form.Field name="balance">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="create-account-balance">Initial Balance</Label>
                 <Input
                   id="create-account-balance"
@@ -208,7 +208,7 @@ export function CreateAccountDialog({
             <form.Subscribe>
               {(state) => (
                 <Button disabled={state.isSubmitting} type="submit">
-                  {state.isSubmitting ? "Creating..." : "Create Account"}
+                  {state.isSubmitting ? "Creating…" : "Create Account"}
                 </Button>
               )}
             </form.Subscribe>

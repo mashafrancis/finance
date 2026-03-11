@@ -1,25 +1,25 @@
-import { ArrowDown, ArrowUp, Plus, TrendingUp } from "lucide-react";
+import { CaretDown, CaretUp, Plus, TrendUp } from "@phosphor-icons/react";
 
 import { useInvestmentsPortfolio } from "@/entities/investment/api/use-investments-portfolio";
 import { useUserSettings } from "@/entities/user-settings/api/use-user-settings";
 import { CreateInvestmentDialog } from "@/features/create-investment/ui/create-investment-dialog";
 import { formatCurrency } from "@/shared/lib/format/currency";
 import { formatPercent } from "@/shared/lib/format/percent";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
-import { Skeleton } from "@/shared/ui/skeleton";
+} from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { InvestmentItem } from "./investment-item";
 
 export function InvestmentsPageSkeleton() {
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <Skeleton className="h-8 w-40" />
@@ -47,7 +47,7 @@ export function InvestmentsPageSkeleton() {
           <Skeleton className="h-4 w-40" />
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             {[...new Array(3)].map((_, i) => (
               <div
                 className="flex items-center justify-between rounded-lg border p-4"
@@ -83,7 +83,7 @@ export function InvestmentsPage() {
   const isPositive = portfolio.totalGain >= 0;
 
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-2xl tracking-tight">Investments</h1>
@@ -99,7 +99,7 @@ export function InvestmentsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="font-medium text-sm">Total Value</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <TrendUp className="h-4 w-4 text-muted-foreground" weight="bold" />
           </CardHeader>
           <CardContent>
             <div className="font-bold text-2xl">
@@ -118,20 +118,20 @@ export function InvestmentsPage() {
               Total Gain/Loss
             </CardTitle>
             {isPositive ? (
-              <ArrowUp className="h-4 w-4 text-green-500" />
+              <CaretUp className="h-4 w-4 text-chart-2" />
             ) : (
-              <ArrowDown className="h-4 w-4 text-red-500" />
+              <CaretDown className="h-4 w-4 text-destructive" />
             )}
           </CardHeader>
           <CardContent>
             <div
-              className={`font-bold text-2xl ${isPositive ? "text-green-500" : "text-red-500"}`}
+              className={`font-bold text-2xl ${isPositive ? "text-chart-2" : "text-destructive"}`}
             >
               {isPositive ? "+" : ""}
               {formatCurrency(portfolio.totalGain, settings.baseCurrency)}
             </div>
             <p
-              className={`text-xs ${isPositive ? "text-green-500" : "text-red-500"}`}
+              className={`text-xs ${isPositive ? "text-chart-2" : "text-destructive"}`}
             >
               {isPositive ? "+" : ""}
               {formatPercent(portfolio.gainPercent)}
@@ -160,18 +160,18 @@ export function InvestmentsPage() {
         </CardHeader>
         <CardContent>
           {portfolio.investments.length > 0 ? (
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4">
               {portfolio.investments.map((inv) => (
                 <InvestmentItem investment={inv} key={inv.id} />
               ))}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-12">
-              <TrendingUp className="h-12 w-12 text-muted-foreground" />
+              <TrendUp className="h-12 w-12 text-muted-foreground" weight="bold" />
               <p className="mt-4 text-muted-foreground">No investments yet</p>
               <CreateInvestmentDialog>
                 <Button className="mt-4" variant="outline">
-                  <Plus className="mr-2 h-4 w-4" />
+                  <Plus className="mr-2" data-icon="inline-start" />
                   Add your first investment
                 </Button>
               </CreateInvestmentDialog>

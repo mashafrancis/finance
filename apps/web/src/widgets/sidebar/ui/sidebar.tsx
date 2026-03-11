@@ -2,22 +2,22 @@ import { Link } from "@tanstack/react-router";
 import { Authenticated } from "convex/react";
 import {
   CreditCard,
-  LayoutDashboard,
-  LogOut,
-  Menu,
+  ChartLineUp,
+  SignOut,
+  List,
   Receipt,
-  Settings,
+  Gear,
   Target,
-  TrendingUp,
+  TrendUp,
   Wallet,
   X,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { useCurrentUser } from "@/entities/user/api/use-current-user";
 import { authClient } from "@/shared/config/auth-client";
-import { Avatar, AvatarFallback } from "@/shared/ui/avatar";
-import { Button } from "@/shared/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,20 +26,20 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
-import { Separator } from "@/shared/ui/separator";
+} from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
 
 const navLinks = [
-  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/dashboard", label: "Dashboard", icon: ChartLineUp },
   { to: "/transactions", label: "Transactions", icon: Receipt },
   { to: "/accounts", label: "Accounts", icon: CreditCard },
   { to: "/subscriptions", label: "Subscriptions", icon: CreditCard },
-  { to: "/investments", label: "Investments", icon: TrendingUp },
+  { to: "/investments", label: "Investments", icon: TrendUp },
   { to: "/goals", label: "Goals", icon: Target },
 ] as const;
 
 const bottomLinks = [
-  { to: "/settings", label: "Settings", icon: Settings },
+  { to: "/settings", label: "Settings", icon: Gear },
 ] as const;
 
 export function Sidebar() {
@@ -50,22 +50,24 @@ export function Sidebar() {
       {/* Mobile header */}
       <div className="fixed top-0 right-0 left-0 z-50 flex h-14 items-center border-b bg-sidebar px-4 lg:hidden">
         <Button
+          aria-label="Open navigation menu"
           className="mr-2"
           onClick={() => setMobileOpen(true)}
           size="icon"
           variant="ghost"
         >
-          <Menu className="h-5 w-5" />
+          <List weight="bold" aria-hidden />
         </Button>
         <Link className="flex items-center gap-2 font-semibold" to="/">
           <Wallet className="h-6 w-6 text-primary" />
-          <span className="text-lg">Pouchy</span>
+          <span className="text-lg">Plutus</span>
         </Link>
       </div>
 
       {/* Mobile overlay */}
       {mobileOpen && (
         <button
+          aria-label="Close navigation menu"
           className="fixed inset-0 z-50 bg-black/50 lg:hidden"
           onClick={() => setMobileOpen(false)}
           onKeyDown={(e) => e.key === "Escape" && setMobileOpen(false)}
@@ -82,28 +84,29 @@ export function Sidebar() {
         {/* Close button for mobile */}
         <div className="absolute top-3 right-3 lg:hidden">
           <Button
+            aria-label="Close navigation menu"
             onClick={() => setMobileOpen(false)}
             size="icon"
             variant="ghost"
           >
-            <X className="h-5 w-5" />
+            <X weight="bold" aria-hidden />
           </Button>
         </div>
 
         {/* Logo */}
         <div className="flex h-14 items-center gap-2 px-4">
           <Wallet className="h-6 w-6 text-primary" />
-          <span className="font-bold text-lg">Pouchy</span>
+          <span className="font-bold text-lg">Plutus</span>
         </div>
 
         <Separator />
 
         {/* Main navigation */}
         <Authenticated>
-          <nav className="flex-1 space-y-1 p-2">
+          <nav className="flex flex-1 flex-col gap-1 p-2">
             {navLinks.map(({ to, label, icon: Icon }) => (
               <Link
-                className="flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-sidebar-foreground/70 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&.active]:bg-primary [&.active]:text-primary-foreground"
+                className="flex min-h-10 items-center gap-3 rounded-md px-3 py-2 font-medium text-sidebar-foreground/70 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&.active]:bg-primary [&.active]:text-primary-foreground"
                 key={to}
                 onClick={() => setMobileOpen(false)}
                 to={to}
@@ -118,10 +121,10 @@ export function Sidebar() {
             <Separator />
 
             {/* Bottom links */}
-            <div className="space-y-1 p-2">
+            <div className="flex flex-col gap-1 p-2">
               {bottomLinks.map(({ to, label, icon: Icon }) => (
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-sidebar-foreground/70 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&.active]:bg-primary [&.active]:text-primary-foreground"
+                  className="flex min-h-10 items-center gap-3 rounded-md px-3 py-2 font-medium text-sidebar-foreground/70 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&.active]:bg-primary [&.active]:text-primary-foreground"
                   key={to}
                   onClick={() => setMobileOpen(false)}
                   to={to}
@@ -163,10 +166,10 @@ function SidebarUser() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button
-            className="flex w-full items-center gap-2 rounded-lg p-2 text-left transition-colors hover:bg-sidebar-accent"
+            className="flex min-h-11 w-full items-center gap-2 rounded-md p-2 text-left transition-colors hover:bg-sidebar-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
             type="button"
           >
-            <Avatar className="h-8 w-8 bg-primary text-primary-foreground">
+            <Avatar className="size-8 bg-primary text-primary-foreground">
               <AvatarFallback className="bg-primary text-primary-foreground text-xs">
                 {initials}
               </AvatarFallback>
@@ -195,7 +198,7 @@ function SidebarUser() {
               }}
               variant="destructive"
             >
-              <LogOut className="mr-2 h-4 w-4" />
+              <SignOut weight="bold" className="mr-2" />
               Sign Out
             </DropdownMenuItem>
           </DropdownMenuGroup>

@@ -4,10 +4,10 @@ import {
   ArrowDownRight,
   ArrowUpRight,
   CreditCard,
-  DollarSign,
-  TrendingUp,
+  CurrencyDollar,
+  TrendUp,
   Wallet,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
@@ -27,14 +27,14 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
-import { ScrollArea } from "@/shared/ui/scroll-area";
-import { Skeleton } from "@/shared/ui/skeleton";
+} from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Skeleton } from "@/components/ui/skeleton";
 import { OnboardingWizard } from "@/widgets/onboarding-wizard/ui/onboarding-wizard";
 
 export function DashboardPageSkeleton() {
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <Skeleton className="h-8 w-32" />
         <Skeleton className="h-4 w-24" />
@@ -69,11 +69,11 @@ export function DashboardPageSkeleton() {
             <Skeleton className="h-4 w-32" />
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4">
               {[...new Array(5)].map((_, i) => (
                 <div className="flex items-center gap-4" key={i}>
                   <Skeleton className="h-9 w-9 rounded-full" />
-                  <div className="flex-1 space-y-2">
+                  <div className="flex flex-1 flex-col gap-2">
                     <Skeleton className="h-4 w-32" />
                     <Skeleton className="h-3 w-24" />
                   </div>
@@ -132,7 +132,7 @@ export function DashboardPage() {
       )}
 
       {/* Dashboard Content */}
-      <div className="flex-1 space-y-6 p-4 lg:p-6">
+      <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="font-bold text-2xl tracking-tight">Dashboard</h1>
@@ -165,10 +165,10 @@ export function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="font-medium text-sm">Income</CardTitle>
-              <ArrowUpRight className="h-4 w-4 text-green-500" />
+              <ArrowUpRight className="h-4 w-4 text-chart-2" />
             </CardHeader>
             <CardContent>
-              <div className="font-bold text-2xl text-green-500">
+              <div className="font-bold text-2xl text-chart-2">
                 +{formatCurrency(summary.totalIncome, settings.baseCurrency)}
               </div>
               <p className="text-muted-foreground text-xs">This month</p>
@@ -178,10 +178,10 @@ export function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="font-medium text-sm">Expenses</CardTitle>
-              <ArrowDownRight className="h-4 w-4 text-red-500" />
+              <ArrowDownRight className="h-4 w-4 text-destructive" />
             </CardHeader>
             <CardContent>
-              <div className="font-bold text-2xl text-red-500">
+              <div className="font-bold text-2xl text-destructive">
                 -{formatCurrency(summary.totalExpenses, settings.baseCurrency)}
               </div>
               <p className="text-muted-foreground text-xs">This month</p>
@@ -191,12 +191,12 @@ export function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="font-medium text-sm">Net Change</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <TrendUp className="h-4 w-4 text-muted-foreground" weight="bold" />
             </CardHeader>
             <CardContent>
               <div
                 className={`font-bold text-2xl ${
-                  summary.netChange >= 0 ? "text-green-500" : "text-red-500"
+                  summary.netChange >= 0 ? "text-chart-2" : "text-destructive"
                 }`}
               >
                 {summary.netChange >= 0 ? "+" : ""}
@@ -267,7 +267,7 @@ export function DashboardPage() {
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     {summary.spendingByCategory.slice(0, 5).map((cat) => (
                       <div
                         className="flex items-center gap-2"
@@ -305,7 +305,7 @@ export function DashboardPage() {
             <CardContent>
               <ScrollArea className="h-[300px]">
                 {summary.recentTransactions.length > 0 ? (
-                  <div className="space-y-4">
+                  <div className="flex flex-col gap-4">
                     {summary.recentTransactions.map((tx) => (
                       <div className="flex items-center gap-4" key={tx._id}>
                         <div
@@ -313,7 +313,7 @@ export function DashboardPage() {
                         >
                           <TransactionIcon type={tx.type} />
                         </div>
-                        <div className="flex-1 space-y-1">
+                        <div className="flex flex-1 flex-col gap-1">
                           <p className="font-medium text-sm leading-none">
                             {tx.description}
                           </p>
@@ -349,7 +349,7 @@ export function DashboardPage() {
             </CardHeader>
             <CardContent>
               {summary.accountBalances.length > 0 ? (
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                   {summary.accountBalances.map((account) => (
                     <div className="flex items-center gap-4" key={account.id}>
                       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
@@ -383,11 +383,11 @@ export function DashboardPage() {
             </CardHeader>
             <CardContent>
               {summary.upcomingSubscriptions.length > 0 ? (
-                <div className="space-y-4">
+                <div className="flex flex-col gap-4">
                   {summary.upcomingSubscriptions.map((sub) => (
                     <div className="flex items-center gap-4" key={sub._id}>
-                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-orange-500/10">
-                        <DollarSign className="h-4 w-4 text-orange-500" />
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
+                        <CurrencyDollar className="h-4 w-4 text-primary" weight="bold" />
                       </div>
                       <div className="flex-1">
                         <p className="font-medium text-sm">{sub.name}</p>

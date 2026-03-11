@@ -2,8 +2,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useAddGoalProgress } from "@/entities/goal/api/use-add-goal-progress";
 import type { GoalId } from "@/entities/goal/types/goal-id";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface AddGoalProgressFormProps {
   goalId: GoalId;

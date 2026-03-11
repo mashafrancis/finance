@@ -1,20 +1,20 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Trash } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useCategoriesList } from "@/entities/category/api/use-categories-list";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
+} from "@/components/ui/select";
 
 // Simple emoji picker - predefined emojis
 const EMOJI_OPTIONS = [
@@ -95,7 +95,7 @@ export default function StepCategories() {
   const customCategories = categories?.filter((c) => !c.isDefault) || [];
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       <div>
         <h3 className="font-semibold text-lg">Customize your categories</h3>
         <p className="text-muted-foreground text-sm">
@@ -106,7 +106,7 @@ export default function StepCategories() {
 
       {/* Default Categories */}
       {defaultCategories.length > 0 && (
-        <div className="space-y-2">
+        <div className="flex flex-col gap-2">
           <Label>Default Categories</Label>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
             {defaultCategories.map((cat) => (
@@ -124,11 +124,11 @@ export default function StepCategories() {
       )}
 
       {/* Add Custom Category */}
-      <div className="space-y-4 rounded-lg border p-4">
+      <div className="flex flex-col gap-4 rounded-md border p-4">
         <Label>Add Custom Category</Label>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="cat-name">Name</Label>
             <Input
               id="cat-name"
@@ -138,7 +138,7 @@ export default function StepCategories() {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="cat-type">Type</Label>
             <Select
               items={[
@@ -158,12 +158,12 @@ export default function StepCategories() {
             </Select>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label>Icon</Label>
             <div className="flex flex-wrap gap-2">
               {EMOJI_OPTIONS.map((emoji) => (
                 <button
-                  className={`flex h-10 w-10 items-center justify-center rounded-md border text-xl transition-colors hover:bg-accent ${
+                  className={`flex h-10 w-10 items-center justify-center rounded-md border text-xl transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
                     icon === emoji ? "border-primary bg-primary/10" : ""
                   }`}
                   key={emoji}
@@ -176,12 +176,12 @@ export default function StepCategories() {
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label>Color</Label>
             <div className="flex flex-wrap gap-2">
               {COLOR_OPTIONS.map((c) => (
                 <button
-                  className={`h-10 w-10 rounded-md border-2 transition-transform hover:scale-110 ${
+                  className={`h-10 w-10 rounded-md border-2 transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
                     color === c
                       ? "scale-110 border-foreground"
                       : "border-transparent"
@@ -197,14 +197,14 @@ export default function StepCategories() {
         </div>
 
         <Button className="w-full" disabled={isAdding} onClick={handleAdd}>
-          <Plus className="mr-2 h-4 w-4" />
+          <Plus className="mr-2" data-icon="inline-start" />
           Add Category
         </Button>
       </div>
 
       {/* Custom Categories List */}
       {customCategories.length > 0 && (
-        <div className="space-y-2">
+        <div className="flex flex-col gap-2">
           <Label>Your Custom Categories ({customCategories.length})</Label>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
             {customCategories.map((cat) => (
@@ -216,12 +216,13 @@ export default function StepCategories() {
                 <span className="text-xl">{cat.icon}</span>
                 <span className="text-sm">{cat.name}</span>
                 <Button
+                  aria-label={`Delete category ${cat.name}`}
                   className="absolute top-1 right-1 opacity-0 group-hover:opacity-100"
                   onClick={() => handleDelete(cat._id)}
                   size="icon"
                   variant="ghost"
                 >
-                  <Trash2 className="h-3 w-3" />
+                  <Trash weight="bold" aria-hidden />
                 </Button>
               </div>
             ))}

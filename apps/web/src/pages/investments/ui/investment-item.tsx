@@ -1,16 +1,16 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { ArrowDown, ArrowUp, MoreHorizontal } from "lucide-react";
+import { CaretDown, CaretUp, DotsThree } from "@phosphor-icons/react";
 
 import { DeleteInvestmentMenuItem } from "@/features/delete-investment/ui/delete-investment-menu-item";
 import { formatCurrency } from "@/shared/lib/format/currency";
 import { formatPercent } from "@/shared/lib/format/percent";
-import { Badge } from "@/shared/ui/badge";
-import { Button } from "@/shared/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 interface InvestmentItemProps {
   investment: {
@@ -28,17 +28,17 @@ export function InvestmentItem({ investment }: InvestmentItemProps) {
   const isPositive = investment.gain >= 0;
 
   return (
-    <div className="flex items-center justify-between rounded-lg border p-4">
+    <div className="flex items-center justify-between rounded-md border p-4">
       <div className="flex items-center gap-4">
         <div
           className={`flex h-10 w-10 items-center justify-center rounded-full ${
-            isPositive ? "bg-green-500/10" : "bg-red-500/10"
+            isPositive ? "bg-chart-2/10" : "bg-destructive/10"
           }`}
         >
           {isPositive ? (
-            <ArrowUp className="h-5 w-5 text-green-500" />
+            <CaretUp className="h-5 w-5 text-chart-2" weight="bold" />
           ) : (
-            <ArrowDown className="h-5 w-5 text-red-500" />
+            <CaretDown className="h-5 w-5 text-destructive" weight="bold" />
           )}
         </div>
         <div>
@@ -56,13 +56,13 @@ export function InvestmentItem({ investment }: InvestmentItemProps) {
       <div className="flex items-center gap-4">
         <div className="text-right">
           <p
-            className={`font-medium ${isPositive ? "text-green-500" : "text-red-500"}`}
+            className={`font-medium ${isPositive ? "text-chart-2" : "text-destructive"}`}
           >
             {isPositive ? "+" : ""}
             {formatCurrency(investment.gain, investment.currency)}
           </p>
           <p
-            className={`text-sm ${isPositive ? "text-green-500" : "text-red-500"}`}
+            className={`text-sm ${isPositive ? "text-chart-2" : "text-destructive"}`}
           >
             {isPositive ? "+" : ""}
             {formatPercent(investment.gainPercent)}
@@ -70,8 +70,8 @@ export function InvestmentItem({ investment }: InvestmentItemProps) {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button size="icon" variant="ghost">
-              <MoreHorizontal className="h-4 w-4" />
+            <Button aria-label="Investment options" size="icon" variant="ghost">
+              <DotsThree weight="bold" aria-hidden />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

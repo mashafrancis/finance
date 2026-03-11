@@ -1,8 +1,8 @@
-import { Trash2 } from "lucide-react";
+import { Trash } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { useDeleteAccount } from "@/entities/account/api/use-delete-account";
 import type { AccountId } from "@/entities/account/types/account-id";
-import { DropdownMenuItem } from "@/shared/ui/dropdown-menu";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 interface DeleteAccountMenuItemProps {
   accountId: AccountId;
@@ -30,7 +30,7 @@ export function DeleteAccountMenuItem({
       className="text-destructive focus:text-destructive"
       onClick={handleDelete}
     >
-      <Trash2 className="mr-2 h-4 w-4" />
+      <Trash weight="bold" className="mr-2" />
       Delete
     </DropdownMenuItem>
   );

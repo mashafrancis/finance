@@ -1,4 +1,4 @@
-import { CreditCard, PiggyBank, TrendingUp, Wallet } from "lucide-react";
+import { CreditCard, PiggyBank, TrendUp, Wallet } from "@phosphor-icons/react";
 import type { AccountType } from "../types/account-id";
 
 export const ACCOUNT_TYPES: {
@@ -10,5 +10,5 @@ export const ACCOUNT_TYPES: {
   { value: "savings", label: "Savings", icon: PiggyBank },
   { value: "credit", label: "Credit Card", icon: CreditCard },
   { value: "cash", label: "Cash", icon: Wallet },
-  { value: "investment", label: "Investment", icon: TrendingUp },
+  { value: "investment", label: "Investment", icon: TrendUp },
 ];

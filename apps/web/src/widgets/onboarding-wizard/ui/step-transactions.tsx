@@ -1,23 +1,23 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Trash } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
 import { useCategoriesList } from "@/entities/category/api/use-categories-list";
 import { useTransactionsList } from "@/entities/transaction/api/use-transactions-list";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
+} from "@/components/ui/select";
 
 export default function StepTransactions() {
   const { data: accounts } = useAccountsList();
@@ -80,7 +80,7 @@ export default function StepTransactions() {
   const recentTransactions = transactions?.slice(0, 5) || [];
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       <div>
         <h3 className="font-semibold text-lg">
           Add recent transactions (Optional)
@@ -92,9 +92,9 @@ export default function StepTransactions() {
       </div>
 
       {/* Add Transaction Form */}
-      <div className="space-y-4 rounded-lg border p-4">
+      <div className="flex flex-col gap-4 rounded-md border p-4">
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="tx-account">Account</Label>
             <Select
               items={accounts?.map((acc) => ({
@@ -117,7 +117,7 @@ export default function StepTransactions() {
             </Select>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="tx-category">Category</Label>
             <Select
               items={categories?.map((cat) => ({
@@ -144,7 +144,7 @@ export default function StepTransactions() {
             </Select>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="tx-type">Type</Label>
             <Select
               items={[
@@ -164,7 +164,7 @@ export default function StepTransactions() {
             </Select>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="tx-amount">Amount</Label>
             <Input
               id="tx-amount"
@@ -175,7 +175,7 @@ export default function StepTransactions() {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="tx-description">Description</Label>
             <Input
               id="tx-description"
@@ -185,7 +185,7 @@ export default function StepTransactions() {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="tx-date">Date</Label>
             <Input
               id="tx-date"
@@ -201,19 +201,19 @@ export default function StepTransactions() {
           disabled={isAdding || !accounts || accounts.length === 0}
           onClick={handleAdd}
         >
-          <Plus className="mr-2 h-4 w-4" />
+          <Plus className="mr-2" data-icon="inline-start" />
           Add Transaction
         </Button>
       </div>
 
       {/* Recent Transactions */}
       {recentTransactions.length > 0 && (
-        <div className="space-y-2">
+        <div className="flex flex-col gap-2">
           <Label>Recent Transactions ({recentTransactions.length})</Label>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             {recentTransactions.map((tx) => (
               <div
-                className="flex items-center justify-between rounded-lg border p-3"
+                className="flex items-center justify-between rounded-md border p-3"
                 key={tx._id}
               >
                 <div>
@@ -224,11 +224,12 @@ export default function StepTransactions() {
                   </p>
                 </div>
                 <Button
+                  aria-label={`Delete transaction ${tx.description}`}
                   onClick={() => handleDelete(tx._id)}
                   size="icon"
                   variant="ghost"
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Trash weight="bold" aria-hidden />
                 </Button>
               </div>
             ))}

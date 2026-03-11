@@ -11,7 +11,7 @@ export const Route = createFileRoute("/_authenticated")({
 
 function AuthenticatedLayout() {
   return (
-    <div className="flex h-svh">
+    <div className="flex h-svh bg-muted/20">
       <Sidebar />
       <main className="flex flex-1 flex-col overflow-hidden">
         <Navbar />

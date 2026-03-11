@@ -3,10 +3,10 @@ import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
 import { Schema } from "effect";
-import { Plus } from "lucide-react";
+import { Plus } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -15,17 +15,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
-import { Tabs, TabsList, TabsTrigger } from "@/shared/ui/tabs";
+} from "@/components/ui/select";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TransactionFormSchema } from "../model/transaction-form-schema";
 
 interface CreateTransactionDialogProps {
@@ -103,7 +103,7 @@ export function CreateTransactionDialog({
       <DialogTrigger asChild>
         {children || (
           <Button disabled={accounts.length === 0}>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className="mr-2" data-icon="inline-start" />
             Add Transaction
           </Button>
         )}
@@ -114,7 +114,7 @@ export function CreateTransactionDialog({
           <DialogDescription>Record a new transaction.</DialogDescription>
         </DialogHeader>
         <form
-          className="space-y-4"
+          className="flex flex-col gap-4"
           onSubmit={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -123,7 +123,7 @@ export function CreateTransactionDialog({
         >
           <form.Field name="type">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label>Type</Label>
                 <Tabs
                   onValueChange={(v) =>
@@ -143,7 +143,7 @@ export function CreateTransactionDialog({
 
           <form.Field name="accountId">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="account">
                   {currentType === "transfer" ? "From Account" : "Account"}
                 </Label>
@@ -184,7 +184,7 @@ export function CreateTransactionDialog({
           {currentType === "transfer" && (
             <form.Field name="toAccountId">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="toAccount">To Account</Label>
                   <Select
                     items={accounts
@@ -222,7 +222,7 @@ export function CreateTransactionDialog({
 
           <form.Field name="categoryId">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="category">Category</Label>
                 <Select
                   items={filteredCategories.map((c) => ({
@@ -260,7 +260,7 @@ export function CreateTransactionDialog({
 
           <form.Field name="amount">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="amount">Amount</Label>
                 <Input
                   id="amount"
@@ -283,7 +283,7 @@ export function CreateTransactionDialog({
 
           <form.Field name="description">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="description">Description</Label>
                 <Input
                   id="description"
@@ -303,7 +303,7 @@ export function CreateTransactionDialog({
 
           <form.Field name="date">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="date">Date</Label>
                 <Input
                   id="date"
@@ -332,7 +332,7 @@ export function CreateTransactionDialog({
             <form.Subscribe>
               {(state) => (
                 <Button disabled={state.isSubmitting} type="submit">
-                  {state.isSubmitting ? "Adding..." : "Add Transaction"}
+                  {state.isSubmitting ? "Adding…" : "Add Transaction"}
                 </Button>
               )}
             </form.Subscribe>

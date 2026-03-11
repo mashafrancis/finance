@@ -1,10 +1,10 @@
 import { Authenticated, Unauthenticated } from "convex/react";
-import { Wallet } from "lucide-react";
+import { Wallet } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { authClient } from "@/shared/config/auth-client";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 
 export function LoginPage() {
   const [isSigningIn, setIsSigningIn] = useState(false);
@@ -35,37 +35,37 @@ export function LoginPage() {
       <Unauthenticated>
         <div className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
           {/* Left Column - Branding/Marketing */}
-          <div className="flex flex-col justify-between bg-zinc-900 p-8 text-white lg:p-12">
+          <div className="flex flex-col justify-between bg-foreground p-8 text-background lg:p-12">
             <div>
               <div className="flex items-center gap-2 font-bold text-xl">
                 <Wallet className="h-6 w-6" />
-                <span>Pouchy</span>
+                <span>Plutus</span>
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4">
               <h1 className="font-bold text-4xl leading-tight lg:text-5xl">
                 Master your money, <br />
                 unleash your freedom.
               </h1>
-              <p className="text-lg text-zinc-400">
+              <p className="text-lg text-background/70">
                 Track expenses, manage subscriptions, and watch your investments
                 grow. All in one beautiful place.
               </p>
             </div>
 
-            <div className="text-sm text-zinc-500">
-              © {new Date().getFullYear()} Pouchy. All rights reserved.
+            <div className="text-background/60 text-sm">
+              © {new Date().getFullYear()} Plutus. All rights reserved.
             </div>
           </div>
 
           {/* Right Column - Auth */}
           <div className="flex items-center justify-center bg-background p-8">
-            <div className="w-full max-w-sm space-y-6">
+            <div className="flex w-full max-w-sm flex-col gap-6">
               <div className="mx-auto w-full max-w-md">
                 <div className="mb-8 text-center">
                   <h1 className="font-bold text-3xl tracking-tight">
-                    Welcome to Pouchy
+                    Welcome to Plutus
                   </h1>
                   <p className="mt-2 text-muted-foreground text-sm">
                     Sign in with your Google account to continue
@@ -79,7 +79,7 @@ export function LoginPage() {
                   type="button"
                   variant="outline"
                 >
-                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+                  <svg className="mr-2" data-icon="inline-start" viewBox="0 0 24 24">
                     <title>Google Logo</title>
                     <path
                       d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -98,7 +98,7 @@ export function LoginPage() {
                       fill="#EA4335"
                     />
                   </svg>
-                  {isSigningIn ? "Redirecting..." : "Continue with Google"}
+                  {isSigningIn ? "Redirecting…" : "Continue with Google"}
                 </Button>
               </div>
             </div>

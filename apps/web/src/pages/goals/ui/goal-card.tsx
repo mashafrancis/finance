@@ -1,5 +1,5 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { MoreHorizontal, Plus } from "lucide-react";
+import { DotsThree, Plus } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { CompleteGoalMenuItem } from "@/features/complete-goal/ui/complete-goal-menu-item";
@@ -8,22 +8,22 @@ import { AddGoalProgressForm } from "@/features/update-goal-progress/ui/add-goal
 import { formatCurrency } from "@/shared/lib/format/currency";
 import { formatDate } from "@/shared/lib/format/date";
 import { formatPercent } from "@/shared/lib/format/percent";
-import { Badge } from "@/shared/ui/badge";
-import { Button } from "@/shared/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
+} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
-import { Progress } from "@/shared/ui/progress";
+} from "@/components/ui/dropdown-menu";
+import { Progress } from "@/components/ui/progress";
 
 interface GoalCardProps {
   goal: {
@@ -61,15 +61,15 @@ export function GoalCard({ goal, isCompleted = false }: GoalCardProps) {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button size="icon" variant="ghost">
-              <MoreHorizontal className="h-4 w-4" />
+            <Button aria-label="Goal options" size="icon" variant="ghost">
+              <DotsThree weight="bold" aria-hidden />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {!isCompleted && (
               <>
                 <DropdownMenuItem onClick={() => setShowAddProgress(true)}>
-                  <Plus className="mr-2 h-4 w-4" />
+                  <Plus className="mr-2" data-icon="inline-start" />
                   Add Progress
                 </DropdownMenuItem>
                 <CompleteGoalMenuItem goalId={goal._id} />
@@ -95,7 +95,7 @@ export function GoalCard({ goal, isCompleted = false }: GoalCardProps) {
             <span>{formatCurrency(remaining, goal.currency)} to go</span>
           )}
           {isCompleted && (
-            <Badge className="bg-green-500" variant="default">
+            <Badge variant="default">
               Completed
             </Badge>
           )}

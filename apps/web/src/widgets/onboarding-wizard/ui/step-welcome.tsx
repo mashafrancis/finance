@@ -1,5 +1,5 @@
-import { Sparkles } from "lucide-react";
-import { Button } from "@/shared/ui/button";
+import { Sparkle } from "@phosphor-icons/react";
+import { Button } from "@/components/ui/button";
 
 interface StepWelcomeProps {
   onNext: () => void;
@@ -8,13 +8,13 @@ interface StepWelcomeProps {
 
 export default function StepWelcome({ onNext, onSkip }: StepWelcomeProps) {
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 py-8 text-center">
+    <div className="flex flex-col items-center justify-center gap-6 py-8 text-center">
       <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-        <Sparkles className="h-10 w-10 text-primary" />
+        <Sparkle className="h-10 w-10 text-primary" weight="fill" />
       </div>
 
-      <div className="space-y-2">
-        <h2 className="font-bold text-3xl">Welcome to Pouchy!</h2>
+      <div className="flex flex-col gap-2">
+        <h2 className="font-bold text-3xl">Welcome to Plutus!</h2>
         <p className="mx-auto max-w-md text-muted-foreground">
           Let's get you set up in just a few minutes. We'll help you add your
           accounts, customize categories, and start tracking your finances.
@@ -65,7 +65,7 @@ export default function StepWelcome({ onNext, onSkip }: StepWelcomeProps) {
         </Button>
 
         <button
-          className="text-xs hover:underline"
+          className="text-xs underline-offset-4 transition-colors hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
           onClick={onSkip}
           type="button"
         >

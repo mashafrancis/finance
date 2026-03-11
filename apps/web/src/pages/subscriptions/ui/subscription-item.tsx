@@ -1,17 +1,17 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { Calendar, MoreHorizontal } from "lucide-react";
+import { Calendar, DotsThree } from "@phosphor-icons/react";
 
 import { DeleteSubscriptionMenuItem } from "@/features/delete-subscription/ui/delete-subscription-menu-item";
 import { ManageSubscriptionStatusMenuItems } from "@/features/manage-subscription-status/ui/manage-subscription-status-menu-items";
 import { formatCurrency } from "@/shared/lib/format/currency";
 import { formatDate } from "@/shared/lib/format/date";
-import { Badge } from "@/shared/ui/badge";
-import { Button } from "@/shared/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 type SubscriptionStatus = "active" | "paused" | "cancelled";
 
@@ -41,7 +41,7 @@ interface SubscriptionItemProps {
 
 export function SubscriptionItem({ subscription }: SubscriptionItemProps) {
   return (
-    <div className="flex items-center justify-between rounded-lg border p-4">
+    <div className="flex items-center justify-between rounded-md border p-4">
       <div className="flex items-center gap-4">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
           <Calendar className="h-5 w-5 text-primary" />
@@ -66,8 +66,8 @@ export function SubscriptionItem({ subscription }: SubscriptionItemProps) {
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button size="icon" variant="ghost">
-            <MoreHorizontal className="h-4 w-4" />
+          <Button aria-label="Subscription options" size="icon" variant="ghost">
+            <DotsThree weight="bold" aria-hidden />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

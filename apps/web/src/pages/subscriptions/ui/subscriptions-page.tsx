@@ -1,4 +1,4 @@
-import { Calendar, DollarSign, Pause, Play, Plus } from "lucide-react";
+import { Calendar, CurrencyDollar, Pause, Play, Plus } from "@phosphor-icons/react";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
 import { useCategoriesList } from "@/entities/category/api/use-categories-list";
@@ -7,15 +7,15 @@ import { useSubscriptionsTotalMonthly } from "@/entities/subscription/api/use-su
 import { useUserSettings } from "@/entities/user-settings/api/use-user-settings";
 import { CreateSubscriptionDialog } from "@/features/create-subscription/ui/create-subscription-dialog";
 import { formatCurrency } from "@/shared/lib/format/currency";
-import { Button } from "@/shared/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
-import { Skeleton } from "@/shared/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { SubscriptionItem } from "./subscription-item";
 
 export function SubscriptionsPageSkeleton() {
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <Skeleton className="h-8 w-40" />
@@ -42,7 +42,7 @@ export function SubscriptionsPageSkeleton() {
           <Skeleton className="h-5 w-40" />
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             {[...new Array(3)].map((_, i) => (
               <div
                 className="flex items-center justify-between rounded-lg border p-4"
@@ -85,7 +85,7 @@ export function SubscriptionsPage() {
   const pausedCount = subscriptions.filter((s) => s.status === "paused").length;
 
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-2xl tracking-tight">Subscriptions</h1>
@@ -101,7 +101,7 @@ export function SubscriptionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="font-medium text-sm">Monthly Cost</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <CurrencyDollar className="h-4 w-4 text-muted-foreground" weight="bold" />
           </CardHeader>
           <CardContent>
             <div className="font-bold text-2xl">
@@ -113,7 +113,7 @@ export function SubscriptionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="font-medium text-sm">Active</CardTitle>
-            <Play className="h-4 w-4 text-green-500" />
+            <Play className="h-4 w-4 text-chart-2" />
           </CardHeader>
           <CardContent>
             <div className="font-bold text-2xl">{activeCount}</div>
@@ -123,7 +123,7 @@ export function SubscriptionsPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="font-medium text-sm">Paused</CardTitle>
-            <Pause className="h-4 w-4 text-yellow-500" />
+            <Pause className="h-4 w-4 text-chart-4" />
           </CardHeader>
           <CardContent>
             <div className="font-bold text-2xl">{pausedCount}</div>
@@ -139,7 +139,7 @@ export function SubscriptionsPage() {
         </CardHeader>
         <CardContent>
           {subscriptions.length > 0 ? (
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4">
               {subscriptions.map((sub) => (
                 <SubscriptionItem key={sub._id} subscription={sub} />
               ))}
@@ -153,7 +153,7 @@ export function SubscriptionsPage() {
                 categories={categories}
               >
                 <Button className="mt-4" variant="outline">
-                  <Plus className="mr-2 h-4 w-4" />
+                  <Plus className="mr-2" data-icon="inline-start" />
                   Add your first subscription
                 </Button>
               </CreateSubscriptionDialog>

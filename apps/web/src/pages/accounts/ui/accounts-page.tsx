@@ -1,4 +1,4 @@
-import { Archive, Landmark, Plus, Wallet } from "lucide-react";
+import { Archive, Bank, Plus, Wallet } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
@@ -6,15 +6,15 @@ import { useAccountsTotalBalance } from "@/entities/account/api/use-accounts-tot
 import { useUserSettings } from "@/entities/user-settings/api/use-user-settings";
 import { CreateAccountDialog } from "@/features/create-account/ui/create-account-dialog";
 import { formatCurrency } from "@/shared/lib/format/currency";
-import { Button } from "@/shared/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
-import { Skeleton } from "@/shared/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { AccountCard } from "./account-card";
 
 export function AccountsPageSkeleton() {
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <Skeleton className="h-8 w-32" />
@@ -78,7 +78,7 @@ export function AccountsPage() {
   const totalBalance = balanceData.total;
 
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-2xl tracking-tight">Accounts</h1>
@@ -93,7 +93,7 @@ export function AccountsPage() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle className="font-medium text-sm">Total Balance</CardTitle>
-          <Landmark className="h-4 w-4 text-muted-foreground" />
+          <Bank className="h-4 w-4 text-muted-foreground" weight="bold" />
         </CardHeader>
         <CardContent>
           <div className="font-bold text-2xl">
@@ -121,7 +121,7 @@ export function AccountsPage() {
               <p className="mt-4 text-muted-foreground">No accounts yet</p>
               <CreateAccountDialog>
                 <Button className="mt-4" variant="outline">
-                  <Plus className="mr-2 h-4 w-4" />
+                  <Plus className="mr-2" data-icon="inline-start" />
                   Add your first account
                 </Button>
               </CreateAccountDialog>
@@ -138,7 +138,7 @@ export function AccountsPage() {
             onClick={() => setShowArchived(!showArchived)}
             variant="ghost"
           >
-            <Archive className="mr-2 h-4 w-4" />
+            <Archive weight="bold" className="mr-2" />
             {showArchived ? "Hide" : "Show"} Archived ({archivedAccounts.length}
             )
           </Button>

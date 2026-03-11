@@ -1,4 +1,4 @@
-import { Pause, Play, X } from "lucide-react";
+import { Pause, Play, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import {
   useCancelSubscription,
@@ -9,7 +9,7 @@ import type {
   SubscriptionId,
   SubscriptionStatus,
 } from "@/entities/subscription/types/subscription-id";
-import { DropdownMenuItem } from "@/shared/ui/dropdown-menu";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 interface ManageSubscriptionStatusMenuItemsProps {
   subscriptionId: SubscriptionId;

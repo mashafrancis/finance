@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home } from "lucide-react";
+import { House } from "@phosphor-icons/react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,7 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/shared/ui/breadcrumb";
+} from "@/components/ui/breadcrumb";
 import { ActivityPopover } from "@/widgets/activity-feed/ui/activity-popover";
 import { NotificationPopover } from "@/widgets/notification-popover/ui/notification-popover";
 
@@ -62,7 +62,7 @@ export function Navbar() {
   const breadcrumbs = getBreadcrumbs(location.pathname);
 
   return (
-    <header className="flex h-14 items-center gap-4 border-b bg-background px-6">
+    <header className="flex h-14 items-center gap-4 border-b bg-background/95 px-4 backdrop-blur-sm lg:px-6">
       <div className="flex flex-1 items-center gap-2">
         <Breadcrumb>
           <BreadcrumbList>
@@ -71,8 +71,8 @@ export function Navbar() {
               <>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link to="/dashboard">
-                      <Home className="h-4 w-4" />
+                    <Link aria-label="Go to dashboard" to="/dashboard">
+                      <House weight="bold" aria-hidden />
                     </Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>

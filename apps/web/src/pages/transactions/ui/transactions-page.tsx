@@ -1,35 +1,35 @@
-import { Filter, Plus, Search } from "lucide-react";
+import { Funnel, Plus, MagnifyingGlass } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
 import { useCategoriesList } from "@/entities/category/api/use-categories-list";
 import { useTransactionsList } from "@/entities/transaction/api/use-transactions-list";
 import { CreateTransactionDialog } from "@/features/create-transaction/ui/create-transaction-dialog";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
-import { Input } from "@/shared/ui/input";
-import { Skeleton } from "@/shared/ui/skeleton";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
   TableBody,
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/ui/table";
-import { Tabs, TabsList, TabsTrigger } from "@/shared/ui/tabs";
+} from "@/components/ui/table";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { TransactionRow } from "./transaction-row";
 import { TransactionsTableSkeleton } from "./transactions-table-skeleton";
 
 export function TransactionsPageSkeleton() {
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <Skeleton className="h-8 w-40" />
@@ -49,7 +49,7 @@ export function TransactionsPageSkeleton() {
           <Skeleton className="h-4 w-24" />
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             {[...new Array(5)].map((_, i) => (
               <div className="flex items-center gap-4" key={i}>
                 <Skeleton className="h-8 w-8 rounded-full" />
@@ -104,7 +104,7 @@ export function TransactionsPage() {
   const transactionCount = filteredTransactions?.length ?? 0;
 
   return (
-    <div className="flex-1 space-y-6 p-4 lg:p-6">
+    <div className="flex flex-1 flex-col gap-6 p-4 lg:p-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-2xl tracking-tight">Transactions</h1>
@@ -121,11 +121,11 @@ export function TransactionsPage() {
           <CardDescription>
             {filteredTransactions
               ? `${transactionCount} transactions`
-              : "Loading..."}
+              : "Loading…"}
           </CardDescription>
           <div className="flex flex-wrap items-center gap-4 pt-4">
             <div className="relative flex-1">
-              <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <MagnifyingGlass className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" weight="bold" />
               <Input
                 className="pl-9"
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -150,7 +150,7 @@ export function TransactionsPage() {
           {!filteredTransactions && <TransactionsTableSkeleton />}
           {filteredTransactions && filteredTransactions.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <Filter className="h-12 w-12 text-muted-foreground" />
+              <Funnel className="h-12 w-12 text-muted-foreground" weight="bold" />
               <p className="mt-4 text-muted-foreground">
                 No transactions found
               </p>
@@ -160,7 +160,7 @@ export function TransactionsPage() {
                   categories={categories}
                 >
                   <Button className="mt-4" variant="outline">
-                    <Plus className="mr-2 h-4 w-4" />
+                    <Plus className="mr-2" data-icon="inline-start" />
                     Add your first transaction
                   </Button>
                 </CreateTransactionDialog>

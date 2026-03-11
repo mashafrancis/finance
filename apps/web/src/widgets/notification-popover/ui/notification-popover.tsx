@@ -1,50 +1,50 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Doc } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
+import type { Icon } from "@phosphor-icons/react";
 import {
-  AlertCircle,
+  Info,
   Bell,
   Check,
-  CheckCheck,
-  type LucideIcon,
-  RefreshCcw,
+  CheckCircle,
+  ArrowsClockwise,
   Target,
-  Trash2,
+  Trash,
   Wallet,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 
 import { useNotificationsList } from "@/entities/notification/api/use-notifications-list";
 import { useNotificationsUnreadCount } from "@/entities/notification/api/use-notifications-unread-count";
 import { formatRelativeDate } from "@/shared/lib/format/date";
-import { Button } from "@/shared/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
-import { ScrollArea } from "@/shared/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 type NotificationType = Doc<"notifications">["type"];
 
-function getNotificationIcon(type: NotificationType): LucideIcon {
+function getNotificationIcon(type: NotificationType): Icon {
   switch (type) {
     case "subscription_renewal":
-      return RefreshCcw;
+      return ArrowsClockwise;
     case "goal_reached":
       return Target;
     case "budget_exceeded":
       return Wallet;
     default:
-      return AlertCircle;
+      return Info;
   }
 }
 
 function getNotificationColor(type: NotificationType): string {
   switch (type) {
     case "subscription_renewal":
-      return "text-orange-500 bg-orange-500/10";
+      return "text-chart-5 bg-chart-5/10";
     case "goal_reached":
-      return "text-green-500 bg-green-500/10";
+      return "text-chart-2 bg-chart-2/10";
     case "budget_exceeded":
-      return "text-red-500 bg-red-500/10";
+      return "text-destructive bg-destructive/10";
     default:
-      return "text-blue-500 bg-blue-500/10";
+      return "text-primary bg-primary/10";
   }
 }
 
@@ -60,8 +60,13 @@ export function NotificationPopover() {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button className="relative h-9 w-9" size="icon" variant="outline">
-          <Bell className="h-4 w-4" />
+        <Button
+          aria-label="Notifications"
+          className="relative"
+          size="icon"
+          variant="outline"
+        >
+          <Bell aria-hidden weight="bold" data-icon="inline-start" />
           {hasUnread && (
             <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary font-medium text-[10px] text-primary-foreground">
               {unreadCount && unreadCount > 9 ? "9+" : unreadCount}
@@ -80,7 +85,7 @@ export function NotificationPopover() {
               size="sm"
               variant="ghost"
             >
-              <CheckCheck className="h-3 w-3" />
+              <CheckCircle data-icon="inline-start" weight="fill" />
               Mark all read
             </Button>
           )}
@@ -90,7 +95,7 @@ export function NotificationPopover() {
             if (!notifications) {
               return (
                 <div className="flex h-[100px] items-center justify-center text-muted-foreground text-sm">
-                  Loading...
+                  Loading…
                 </div>
               );
             }
@@ -136,25 +141,24 @@ export function NotificationPopover() {
                       <div className="absolute top-2 right-2 flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
                         {!notification.isRead && (
                           <Button
-                            className="h-6 w-6"
+                            aria-label="Mark notification as read"
                             onClick={() => markAsRead({ id: notification._id })}
-                            size="icon"
-                            title="Mark as read"
+                            size="icon-sm"
                             variant="ghost"
                           >
-                            <Check className="h-3 w-3" />
+                            <Check weight="bold" aria-hidden />
                           </Button>
                         )}
                         <Button
-                          className="h-6 w-6 text-destructive hover:text-destructive"
+                          aria-label="Delete notification"
+                          className="text-destructive hover:text-destructive"
                           onClick={() =>
                             removeNotification({ id: notification._id })
                           }
-                          size="icon"
-                          title="Delete"
+                          size="icon-sm"
                           variant="ghost"
                         >
-                          <Trash2 className="h-3 w-3" />
+                          <Trash weight="bold" aria-hidden />
                         </Button>
                       </div>
                     </div>

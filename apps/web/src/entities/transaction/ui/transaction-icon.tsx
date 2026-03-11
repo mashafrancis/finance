@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, RefreshCcw } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, ArrowsClockwise } from "@phosphor-icons/react";
 import type { TransactionType } from "../types/transaction-type";
 
 export function TransactionIcon({ type }: { type: TransactionType }) {
@@ -6,7 +6,7 @@ export function TransactionIcon({ type }: { type: TransactionType }) {
     case "income":
       return <ArrowUpRight className="h-4 w-4" />;
     case "transfer":
-      return <RefreshCcw className="h-4 w-4" />;
+      return <ArrowsClockwise className="h-4 w-4" weight="bold" />;
     default:
       return <ArrowDownRight className="h-4 w-4" />;
   }

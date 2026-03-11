@@ -1,20 +1,20 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Trash } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useAccountsList } from "@/entities/account/api/use-accounts-list";
-import { Button } from "@/shared/ui/button";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
+} from "@/components/ui/select";
 
 const ACCOUNT_TYPES = [
   { value: "checking", label: "Checking" },
@@ -80,7 +80,7 @@ export default function StepAccounts() {
   const canProceed = accounts && accounts.length > 0;
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       <div>
         <h3 className="font-semibold text-lg">Set up your accounts</h3>
         <p className="text-muted-foreground text-sm">
@@ -89,9 +89,9 @@ export default function StepAccounts() {
       </div>
 
       {/* Add Account Form */}
-      <div className="space-y-4 rounded-lg border p-4">
+      <div className="flex flex-col gap-4 rounded-md border p-4">
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="account-name">Account Name</Label>
             <Input
               id="account-name"
@@ -101,7 +101,7 @@ export default function StepAccounts() {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="account-type">Type</Label>
             <Select
               items={ACCOUNT_TYPES.map((t) => ({
@@ -124,7 +124,7 @@ export default function StepAccounts() {
             </Select>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="account-currency">Currency</Label>
             <Select
               items={CURRENCIES.map((c) => ({
@@ -147,7 +147,7 @@ export default function StepAccounts() {
             </Select>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="account-balance">Current Balance</Label>
             <Input
               id="account-balance"
@@ -160,19 +160,19 @@ export default function StepAccounts() {
         </div>
 
         <Button className="w-full" disabled={isAdding} onClick={handleAdd}>
-          <Plus className="mr-2 h-4 w-4" />
+          <Plus className="mr-2" data-icon="inline-start" />
           Add Account
         </Button>
       </div>
 
       {/* Accounts List */}
       {accounts && accounts.length > 0 && (
-        <div className="space-y-2">
+        <div className="flex flex-col gap-2">
           <Label>Your Accounts ({accounts.length})</Label>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             {accounts.map((account) => (
               <div
-                className="flex items-center justify-between rounded-lg border p-3"
+                className="flex items-center justify-between rounded-md border p-3"
                 key={account._id}
               >
                 <div>
@@ -183,11 +183,12 @@ export default function StepAccounts() {
                   </p>
                 </div>
                 <Button
+                  aria-label={`Delete account ${account.name}`}
                   onClick={() => handleDelete(account._id)}
                   size="icon"
                   variant="ghost"
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Trash weight="bold" aria-hidden />
                 </Button>
               </div>
             ))}

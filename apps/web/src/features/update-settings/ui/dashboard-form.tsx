@@ -1,4 +1,4 @@
-import { Settings } from "lucide-react";
+import { Gear as Settings } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { useUpdateSettings } from "@/entities/user-settings/api/use-update-settings";
@@ -9,16 +9,16 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
-import { Label } from "@/shared/ui/label";
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
-import { Skeleton } from "@/shared/ui/skeleton";
+} from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
 import { DATE_RANGES } from "../model/constants";
 
 export function DashboardForm() {
@@ -63,7 +63,7 @@ export function DashboardForm() {
         </div>
         <CardDescription>Customize your dashboard experience</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <Label htmlFor="dateRange">Default Date Range</Label>
           <Select

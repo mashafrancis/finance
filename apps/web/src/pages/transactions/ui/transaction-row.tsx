@@ -1,5 +1,5 @@
 import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataModel";
-import { MoreHorizontal, Pencil } from "lucide-react";
+import { DotsThree, PencilSimple } from "@phosphor-icons/react";
 import { useState } from "react";
 
 import {
@@ -11,15 +11,15 @@ import { DeleteTransactionButton } from "@/features/delete-transaction/ui/delete
 import { EditTransactionDialog } from "@/features/edit-transaction/ui/edit-transaction-dialog";
 import { formatCurrency } from "@/shared/lib/format/currency";
 import { formatDate } from "@/shared/lib/format/date";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
-import { TableCell, TableRow } from "@/shared/ui/table";
+} from "@/components/ui/dropdown-menu";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 interface TransactionRowProps {
   transaction: {
@@ -81,13 +81,13 @@ export function TransactionRow({
         <TableCell>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button size="icon" variant="ghost">
-                <MoreHorizontal className="h-4 w-4" />
+              <Button aria-label="Transaction options" size="icon" variant="ghost">
+                <DotsThree weight="bold" aria-hidden />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => setEditDialogOpen(true)}>
-                <Pencil className="mr-2 h-4 w-4" />
+                <PencilSimple weight="bold" className="mr-2" />
                 Edit
               </DropdownMenuItem>
               <DropdownMenuSeparator />

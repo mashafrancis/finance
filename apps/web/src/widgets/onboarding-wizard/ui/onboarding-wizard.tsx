@@ -1,17 +1,17 @@
 import { api } from "@tanstack-effect-convex/backend/convex/_generated/api";
 import { useMutation } from "convex/react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Check } from "@phosphor-icons/react";
 import { useState } from "react";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/shared/ui/dialog";
+} from "@/components/ui/dialog";
 import StepAccounts from "./step-accounts";
 import StepCategories from "./step-categories";
 import StepComplete from "./step-complete";
@@ -39,6 +39,7 @@ export function OnboardingWizard({
 }: OnboardingWizardProps) {
   const [currentStep, setCurrentStep] = useState(initialStep);
   const [isOpen, setIsOpen] = useState(true);
+  const prefersReducedMotion = useReducedMotion();
   const updateSettings = useMutation(api.userSettings.update);
 
   const handleNext = async () => {
@@ -100,7 +101,7 @@ export function OnboardingWizard({
         {/* Fixed Header */}
         <DialogHeader className="px-6 pt-6">
           <DialogTitle className="text-2xl">
-            Get Started with Pouchy
+            Get Started with Plutus
           </DialogTitle>
           <DialogDescription>
             Let's set up your financial tracking in just a few steps
@@ -120,7 +121,8 @@ export function OnboardingWizard({
               >
                 <div className="flex flex-col items-center">
                   <button
-                    className={`flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all ${getStepClassName(
+                    aria-label={`Go to onboarding step ${index + 1}: ${step.title}`}
+                    className={`flex size-10 items-center justify-center rounded-full border-2 transition-[background-color,color,border-color,transform] ${getStepClassName(
                       index
                     )} ${index < currentStep ? "cursor-pointer hover:scale-110" : "cursor-default"}`}
                     disabled={index >= currentStep}
@@ -133,7 +135,7 @@ export function OnboardingWizard({
                     type="button"
                   >
                     {index < currentStep ? (
-                      <Check className="h-5 w-5" />
+                      <Check className="h-5 w-5" aria-hidden />
                     ) : (
                       <span className="font-semibold text-sm">{index + 1}</span>
                     )}
@@ -166,10 +168,10 @@ export function OnboardingWizard({
             <motion.div
               animate={{ opacity: 1, x: 0 }}
               className="min-h-[300px]"
-              exit={{ opacity: 0, x: -20 }}
-              initial={{ opacity: 0, x: 20 }}
+              exit={{ opacity: 0, x: prefersReducedMotion ? 0 : -20 }}
+              initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 20 }}
               key={currentStep}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
             >
               <CurrentStepComponent
                 onNext={handleNext}

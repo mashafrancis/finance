@@ -1,4 +1,4 @@
-import { Bell } from "lucide-react";
+import { Bell } from "@phosphor-icons/react";
 import { toast } from "sonner";
 
 import { useUpdateSettings } from "@/entities/user-settings/api/use-update-settings";
@@ -9,10 +9,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
-import { Checkbox } from "@/shared/ui/checkbox";
-import { Label } from "@/shared/ui/label";
-import { Skeleton } from "@/shared/ui/skeleton";
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function NotificationsForm() {
   const { data: settings } = useUserSettings();
@@ -69,9 +69,9 @@ export function NotificationsForm() {
         </div>
         <CardDescription>Manage how you receive notifications</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <div className="space-y-0.5">
+          <div className="flex flex-col gap-0.5">
             <Label htmlFor="notifications">In-App Notifications</Label>
             <p className="text-muted-foreground text-xs">
               Receive notifications within the app
@@ -84,7 +84,7 @@ export function NotificationsForm() {
           />
         </div>
         <div className="flex items-center justify-between">
-          <div className="space-y-0.5">
+          <div className="flex flex-col gap-0.5">
             <Label htmlFor="emailNotifications">Email Notifications</Label>
             <p className="text-muted-foreground text-xs">
               Receive important updates via email

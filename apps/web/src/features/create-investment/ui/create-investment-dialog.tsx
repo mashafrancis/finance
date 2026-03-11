@@ -1,12 +1,12 @@
 import { useForm } from "@tanstack/react-form";
 
 import { Schema } from "effect";
-import { Plus } from "lucide-react";
+import { Plus } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { useCreateInvestment } from "@/entities/investment/api/use-create-investment";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -15,16 +15,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
+} from "@/components/ui/select";
 import {
   CURRENCIES,
   INVESTMENT_TYPES,
@@ -88,7 +88,7 @@ export function CreateInvestmentDialog({
       <DialogTrigger asChild>
         {children || (
           <Button>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className="mr-2" data-icon="inline-start" />
             Add Investment
           </Button>
         )}
@@ -101,7 +101,7 @@ export function CreateInvestmentDialog({
           </DialogDescription>
         </DialogHeader>
         <form
-          className="space-y-4"
+          className="flex flex-col gap-4"
           onSubmit={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -111,7 +111,7 @@ export function CreateInvestmentDialog({
           <div className="grid grid-cols-2 gap-4">
             <form.Field name="name">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="name">Name</Label>
                   <Input
                     id="name"
@@ -134,7 +134,7 @@ export function CreateInvestmentDialog({
 
             <form.Field name="symbol">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="symbol">Symbol (optional)</Label>
                   <Input
                     id="symbol"
@@ -153,7 +153,7 @@ export function CreateInvestmentDialog({
           <div className="grid grid-cols-2 gap-4">
             <form.Field name="type">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="type">Type</Label>
                   <Select
                     items={INVESTMENT_TYPES.map((t) => ({
@@ -192,7 +192,7 @@ export function CreateInvestmentDialog({
 
             <form.Field name="currency">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="currency">Currency</Label>
                   <Select
                     items={[...CURRENCIES]}
@@ -220,7 +220,7 @@ export function CreateInvestmentDialog({
           <div className="grid grid-cols-2 gap-4">
             <form.Field name="quantity">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="quantity">Quantity</Label>
                   <Input
                     id="quantity"
@@ -246,7 +246,7 @@ export function CreateInvestmentDialog({
 
             <form.Field name="purchasePrice">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="purchasePrice">Purchase Price</Label>
                   <Input
                     id="purchasePrice"
@@ -274,7 +274,7 @@ export function CreateInvestmentDialog({
           <div className="grid grid-cols-2 gap-4">
             <form.Field name="currentPrice">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="currentPrice">Current Price (optional)</Label>
                   <Input
                     id="currentPrice"
@@ -292,7 +292,7 @@ export function CreateInvestmentDialog({
 
             <form.Field name="purchaseDate">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="purchaseDate">Purchase Date</Label>
                   <Input
                     id="purchaseDate"
@@ -325,7 +325,7 @@ export function CreateInvestmentDialog({
             <form.Subscribe>
               {(state) => (
                 <Button disabled={state.isSubmitting} type="submit">
-                  {state.isSubmitting ? "Adding..." : "Add Investment"}
+                  {state.isSubmitting ? "Adding…" : "Add Investment"}
                 </Button>
               )}
             </form.Subscribe>

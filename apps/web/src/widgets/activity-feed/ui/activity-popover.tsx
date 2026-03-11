@@ -1,23 +1,23 @@
+import type { Icon } from "@phosphor-icons/react";
 import {
-  Activity,
+  Lightning,
   ArrowUpRight,
-  type LucideIcon,
-  RefreshCcw,
+  ArrowsClockwise,
   Target,
-  Trash2,
-  TrendingUp,
+  Trash,
+  TrendUp,
   Wallet,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 
 import { useActivitiesGet } from "@/entities/activity/api/use-activities-get";
 import { formatRelativeDate } from "@/shared/lib/format/date";
-import { Button } from "@/shared/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
-import { ScrollArea } from "@/shared/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
-function getActivityIcon(type: string, entityType: string): LucideIcon {
+function getActivityIcon(type: string, entityType: string): Icon {
   if (type.startsWith("delete_")) {
-    return Trash2;
+    return Trash;
   }
 
   switch (entityType) {
@@ -26,32 +26,32 @@ function getActivityIcon(type: string, entityType: string): LucideIcon {
     case "transaction":
       return ArrowUpRight; // Default, logic can be refined if we had transaction type in metadata
     case "investment":
-      return TrendingUp;
+      return TrendUp;
     case "goal":
       return Target;
     case "subscription":
-      return RefreshCcw;
+      return ArrowsClockwise;
     default:
-      return Activity;
+      return Lightning;
   }
 }
 
 function getActivityColor(type: string, entityType: string): string {
   if (type.startsWith("delete_")) {
-    return "text-red-500 bg-red-500/10";
+    return "text-destructive bg-destructive/10";
   }
 
   switch (entityType) {
     case "account":
-      return "text-blue-500 bg-blue-500/10";
+      return "text-primary bg-primary/10";
     case "transaction":
-      return "text-green-500 bg-green-500/10";
+      return "text-chart-2 bg-chart-2/10";
     case "investment":
-      return "text-purple-500 bg-purple-500/10";
+      return "text-chart-4 bg-chart-4/10";
     case "goal":
-      return "text-amber-500 bg-amber-500/10";
+      return "text-chart-3 bg-chart-3/10";
     case "subscription":
-      return "text-orange-500 bg-orange-500/10";
+      return "text-chart-5 bg-chart-5/10";
     default:
       return "text-primary bg-primary/10";
   }
@@ -79,8 +79,12 @@ export function ActivityPopover() {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button className="relative h-9 w-9" size="icon" variant="outline">
-          <Activity className="h-4 w-4" />
+        <Button
+          aria-label="Toggle activity feed"
+          size="icon"
+          variant="outline"
+        >
+          <Lightning weight="bold" data-icon="inline-start" aria-hidden />
           <span className="sr-only">Toggle activity feed</span>
         </Button>
       </PopoverTrigger>
@@ -94,7 +98,7 @@ export function ActivityPopover() {
             if (!activities) {
               return (
                 <div className="flex h-[100px] items-center justify-center text-muted-foreground text-sm">
-                  Loading...
+                  Loading…
                 </div>
               );
             }

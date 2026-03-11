@@ -1,8 +1,8 @@
-import { Trash2 } from "lucide-react";
+import { Trash } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { useDeleteGoal } from "@/entities/goal/api/use-delete-goal";
 import type { GoalId } from "@/entities/goal/types/goal-id";
-import { DropdownMenuItem } from "@/shared/ui/dropdown-menu";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 interface DeleteGoalMenuItemProps {
   goalId: GoalId;
@@ -28,7 +28,7 @@ export function DeleteGoalMenuItem({ goalId }: DeleteGoalMenuItemProps) {
       className="text-destructive focus:text-destructive"
       onClick={handleDelete}
     >
-      <Trash2 className="mr-2 h-4 w-4" />
+      <Trash weight="bold" className="mr-2" />
       Delete
     </DropdownMenuItem>
   );

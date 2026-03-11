@@ -1,11 +1,11 @@
 import { useForm } from "@tanstack/react-form";
 import { Schema } from "effect";
-import { Plus } from "lucide-react";
+import { Plus } from "@phosphor-icons/react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { useCreateGoal } from "@/entities/goal/api/use-create-goal";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -14,9 +14,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { GOAL_ICONS, GoalFormSchema } from "../model/goal-form-schema";
 
 export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
@@ -62,7 +62,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
       <DialogTrigger asChild>
         {children || (
           <Button>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className="mr-2" data-icon="inline-start" />
             Create Goal
           </Button>
         )}
@@ -75,7 +75,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
           </DialogDescription>
         </DialogHeader>
         <form
-          className="space-y-4"
+          className="flex flex-col gap-4"
           onSubmit={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -84,7 +84,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
         >
           <form.Field name="icon">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label>Icon</Label>
                 <form.Subscribe selector={(state) => state.values.icon}>
                   {(selectedIcon) => (
@@ -110,7 +110,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
 
           <form.Field name="name">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="name">Goal Name</Label>
                 <Input
                   id="name"
@@ -131,7 +131,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
           <div className="grid grid-cols-2 gap-4">
             <form.Field name="targetAmount">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="targetAmount">Target Amount</Label>
                   <Input
                     id="targetAmount"
@@ -157,7 +157,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
 
             <form.Field name="currentAmount">
               {(field) => (
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="currentAmount">Current Progress</Label>
                   <Input
                     id="currentAmount"
@@ -176,7 +176,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
 
           <form.Field name="targetDate">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="targetDate">Target Date (optional)</Label>
                 <Input
                   id="targetDate"
@@ -200,7 +200,7 @@ export function CreateGoalDialog({ children }: { children?: React.ReactNode }) {
             <form.Subscribe>
               {(state) => (
                 <Button disabled={state.isSubmitting} type="submit">
-                  {state.isSubmitting ? "Creating..." : "Create Goal"}
+                  {state.isSubmitting ? "Creating…" : "Create Goal"}
                 </Button>
               )}
             </form.Subscribe>

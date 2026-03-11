@@ -4,7 +4,7 @@ import type { Id } from "@tanstack-effect-convex/backend/convex/_generated/dataM
 import { useMutation } from "convex/react";
 import { Schema } from "effect";
 import { toast } from "sonner";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -12,16 +12,16 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/shared/ui/dialog";
-import { Input } from "@/shared/ui/input";
-import { Label } from "@/shared/ui/label";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/ui/select";
+} from "@/components/ui/select";
 import { EditTransactionFormSchema } from "../model/edit-transaction-schema";
 
 interface EditTransactionDialogProps {
@@ -91,7 +91,7 @@ export function EditTransactionDialog({
           <DialogDescription>Update transaction details.</DialogDescription>
         </DialogHeader>
         <form
-          className="space-y-4"
+          className="flex flex-col gap-4"
           onSubmit={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -100,7 +100,7 @@ export function EditTransactionDialog({
         >
           <form.Field name="description">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="description">Description</Label>
                 <Input
                   id="description"
@@ -120,7 +120,7 @@ export function EditTransactionDialog({
 
           <form.Field name="categoryId">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="category">Category</Label>
                 <Select
                   items={filteredCategories.map((c) => ({
@@ -158,7 +158,7 @@ export function EditTransactionDialog({
 
           <form.Field name="date">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="date">Date</Label>
                 <Input
                   id="date"
@@ -178,7 +178,7 @@ export function EditTransactionDialog({
 
           <form.Field name="notes">
             {(field) => (
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="notes">Notes (optional)</Label>
                 <Input
                   id="notes"
@@ -202,7 +202,7 @@ export function EditTransactionDialog({
             <form.Subscribe>
               {(state) => (
                 <Button disabled={state.isSubmitting} type="submit">
-                  {state.isSubmitting ? "Saving..." : "Save Changes"}
+                  {state.isSubmitting ? "Saving…" : "Save Changes"}
                 </Button>
               )}
             </form.Subscribe>

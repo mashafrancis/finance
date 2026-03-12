@@ -21,7 +21,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
     <ol
       data-slot="breadcrumb-list"
       className={cn(
-        "flex flex-wrap items-center gap-1.5 text-xs wrap-break-word text-muted-foreground",
+        "flex flex-wrap items-center gap-1.5 text-sm wrap-break-word text-muted-foreground",
         className
       )}
       {...props}
@@ -42,11 +42,8 @@ function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
 function BreadcrumbLink({
   className,
   render,
-  asChild = false,
-  children,
   ...props
-}: useRender.ComponentProps<"a"> & { asChild?: boolean }) {
-  const resolvedRender = asChild && React.isValidElement(children) ? children : render
+}: useRender.ComponentProps<"a">) {
   return useRender({
     defaultTagName: "a",
     props: mergeProps<"a">(
@@ -55,7 +52,7 @@ function BreadcrumbLink({
       },
       props
     ),
-    render: resolvedRender,
+    render,
     state: {
       slot: "breadcrumb-link",
     },
@@ -89,7 +86,7 @@ function BreadcrumbSeparator({
       {...props}
     >
       {children ?? (
-        <CaretRightIcon weight="bold" />
+        <CaretRightIcon />
       )}
     </li>
   )
@@ -110,7 +107,8 @@ function BreadcrumbEllipsis({
       )}
       {...props}
     >
-      <DotsThreeIcon weight="bold" />
+      <DotsThreeIcon
+      />
       <span className="sr-only">More</span>
     </span>
   )

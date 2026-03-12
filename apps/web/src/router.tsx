@@ -4,9 +4,9 @@ import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 import { env } from "@tanstack-effect-convex/env/web";
 
-import Loader from "@/components/ui/loader";
 import "@/app/styles/index.css";
 import { routeTree } from "./routeTree.gen";
+import {Loading} from "@/components/ui/loading";
 
 export function getRouter() {
   const convexUrl = env.VITE_CONVEX_URL;
@@ -32,7 +32,7 @@ export function getRouter() {
     defaultPreload: "intent",
     defaultPendingMs: 0,
     defaultPendingMinMs: 50,
-    defaultPendingComponent: () => <Loader />,
+    defaultPendingComponent: () => <Loading />,
     defaultNotFoundComponent: () => <div>Not Found</div>,
     context: { queryClient, convexQueryClient },
   });

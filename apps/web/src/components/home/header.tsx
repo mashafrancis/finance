@@ -3,7 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { Authenticated, Unauthenticated } from "convex/react";
 
 import SectionContainer from "@/components/section-container";
-import { Button } from "@/components/ui/button";
+import {buttonVariants} from "@/components/ui/button";
+import {cn} from "@/lib/utils";
 
 type Props = {
   h1: string | React.ReactNode;
@@ -33,7 +34,10 @@ export default function HomeHeader(props: Props) {
                 ) : null}
               </div>
             )}
-            <h1 className="font-bold text-3xl tracking-tight md:text-4xl lg:text-5xl">
+            <h1
+              className="h1 text-3xl tracking-[-.15px] md:text-4xl! lg:text-4xl! 2xl:text-6xl!"
+              key={"h1"}
+            >
               {props.h1}
             </h1>
           </div>
@@ -51,17 +55,29 @@ export default function HomeHeader(props: Props) {
 
           <div className="flex flex-row gap-2 md:items-center">
             <Authenticated>
-              <Link to="/dashboard">
-                <Button size="lg" variant="default">
-                  Manage finances
-                </Button>
+              <Link
+                className={cn(
+                  buttonVariants({
+                    size: "lg",
+                    variant: "default",
+                  })
+                )}
+                to="/dashboard"
+              >
+                Manage finances
               </Link>
             </Authenticated>
             <Unauthenticated>
-              <Link to="/login">
-                <Button size="lg" variant="default">
-                  Manage finances
-                </Button>
+              <Link
+                className={cn(
+                  buttonVariants({
+                    size: "lg",
+                    variant: "default",
+                  })
+                )}
+                to="/login"
+              >
+                Manage finances
               </Link>
             </Unauthenticated>
           </div>

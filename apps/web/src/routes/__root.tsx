@@ -14,6 +14,14 @@ import appCss from "@/app/styles/index.css?url";
 import type { RouterAppContext } from "@/app/types/router-app-context";
 import { getToken } from "@/shared/config/auth-server";
 import { Toaster } from "@/components/ui/sonner";
+import { Databuddy } from "@databuddy/sdk/react";
+import { op } from '@/lib/op';
+
+const databuddyId = import.meta.env.VITE_DATABUDDY_CLIENT_ID;
+
+if (import.meta.env.VITE_OP_CLIENT_ID) {
+  op.init();
+}
 
 const getAuth = createServerFn({ method: "GET" }).handler(async () => {
   return await getToken();
@@ -96,6 +104,22 @@ function RootDocument() {
             <IconProvider>
               <Outlet />
               <Toaster richColors />
+              <Databuddy
+                clientId={
+                  databuddyId
+                }
+                enableBatching={true}
+                trackAttributes={true}
+                // trackBounceRate={true}
+                // trackEngagement={true}
+                trackErrors={true}
+                // trackExitIntent={true}
+                trackHashChanges={true}
+                trackInteractions={true}
+                trackOutgoingLinks={true}
+                trackScrollDepth={true}
+                trackWebVitals={true}
+              />
               <TanStackRouterDevtools position="bottom-left" />
               <Scripts />
             </IconProvider>

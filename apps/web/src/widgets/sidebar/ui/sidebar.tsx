@@ -106,7 +106,7 @@ export function Sidebar() {
           <nav className="flex flex-1 flex-col gap-1 p-2">
             {navLinks.map(({ to, label, icon: Icon }) => (
               <Link
-                className="flex min-h-10 items-center gap-3 rounded-md px-3 py-2 font-medium text-sidebar-foreground/70 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&.active]:bg-primary [&.active]:text-primary-foreground"
+                className="flex min-h-10 items-center gap-3 rounded-md px-3 py-2 font-medium text-sidebar-foreground/70 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&.active]:bg-primary/10 [&.active]:text-primary"
                 key={to}
                 onClick={() => setMobileOpen(false)}
                 to={to}
@@ -124,7 +124,7 @@ export function Sidebar() {
             <div className="flex flex-col gap-1 p-2">
               {bottomLinks.map(({ to, label, icon: Icon }) => (
                 <Link
-                  className="flex min-h-10 items-center gap-3 rounded-md px-3 py-2 font-medium text-sidebar-foreground/70 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&.active]:bg-primary [&.active]:text-primary-foreground"
+                  className="flex min-h-10 items-center gap-3 rounded-md px-3 py-2 font-medium text-sidebar-foreground/70 text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&.active]:bg-primary/10 [&.active]:text-primary"
                   key={to}
                   onClick={() => setMobileOpen(false)}
                   to={to}
@@ -164,7 +164,7 @@ function SidebarUser() {
   return (
     <div className="p-2">
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+        <DropdownMenuTrigger>
           <button
             className="flex min-h-11 w-full items-center gap-2 rounded-md p-2 text-left transition-colors hover:bg-sidebar-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
             type="button"

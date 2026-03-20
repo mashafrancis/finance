@@ -25,8 +25,8 @@ catalogs:
       specifier: ^17.3.1
       version: 17.3.1
     effect:
-      specifier: ^3.19.19
-      version: 3.19.19
+      specifier: ^3.20.0
+      version: 3.21.0
     typescript:
       specifier: ^5.9.3
       version: 5.9.3
@@ -68,7 +68,7 @@ importers:
         version: 5.9.3
       ultracite:
         specifier: 6.5.1
-        version: 6.5.1(effect@3.19.19)(typescript@5.9.3)
+        version: 6.5.1(effect@3.21.0)(typescript@5.9.3)
 
   apps/web:
     dependencies:
@@ -146,7 +146,7 @@ importers:
         version: 17.3.1
       effect:
         specifier: 'catalog:'
-        version: 3.19.19
+        version: 3.21.0
       framer-motion:
         specifier: ^12.36.0
         version: 12.36.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -237,7 +237,7 @@ importers:
         version: 17.3.1
       effect:
         specifier: 'catalog:'
-        version: 3.19.19
+        version: 3.21.0
     devDependencies:
       '@effect/language-service':
         specifier: 'catalog:'
@@ -2198,8 +2198,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.19.19:
-    resolution: {integrity: sha512-Yc8U/SVXo2dHnaP7zNBlAo83h/nzSJpi7vph6Hzyl4ulgMBIgPmz3UzOjb9sBgpFE00gC0iETR244sfXDNLHRg==}
+  effect@3.21.0:
+    resolution: {integrity: sha512-PPN80qRokCd1f015IANNhrwOnLO7GrrMQfk4/lnZRE/8j7UPWrNNjPV0uBrZutI/nHzernbW+J0hdqQysHiSnQ==}
 
   electron-to-chromium@1.5.267:
     resolution: {integrity: sha512-0Drusm6MVRXSOJpGbaSVgcQsuB4hEkMpHXaVstcPmhu5LIedxs1xNK/nIxmQIU/RPC0+1/o0AVZfBTkTNJOdUw==}
@@ -5586,7 +5586,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.19.19:
+  effect@3.21.0:
     dependencies:
       '@standard-schema/spec': 1.1.0
       fast-check: 3.23.2
@@ -6945,12 +6945,12 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  trpc-cli@0.12.1(@trpc/server@11.8.1(typescript@5.9.3))(effect@3.19.19)(zod@4.3.2):
+  trpc-cli@0.12.1(@trpc/server@11.8.1(typescript@5.9.3))(effect@3.21.0)(zod@4.3.2):
     dependencies:
       commander: 14.0.2
     optionalDependencies:
       '@trpc/server': 11.8.1(typescript@5.9.3)
-      effect: 3.19.19
+      effect: 3.21.0
       zod: 4.3.2
 
   ts-morph@26.0.0:
@@ -7022,7 +7022,7 @@ snapshots:
 
   ufo@1.6.1: {}
 
-  ultracite@6.5.1(effect@3.19.19)(typescript@5.9.3):
+  ultracite@6.5.1(effect@3.21.0)(typescript@5.9.3):
     dependencies:
       '@clack/prompts': 0.11.0
       '@trpc/server': 11.8.1(typescript@5.9.3)
@@ -7031,7 +7031,7 @@ snapshots:
       jsonc-parser: 3.3.1
       nypm: 0.6.2
       picocolors: 1.1.1
-      trpc-cli: 0.12.1(@trpc/server@11.8.1(typescript@5.9.3))(effect@3.19.19)(zod@4.3.2)
+      trpc-cli: 0.12.1(@trpc/server@11.8.1(typescript@5.9.3))(effect@3.21.0)(zod@4.3.2)
       zod: 4.3.2
     transitivePeerDependencies:
       - '@orpc/server'
